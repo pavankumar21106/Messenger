@@ -11,6 +11,7 @@ namespace MailServiceAPI.Controllers
     [ApiController]
     public class MessageController : ControllerBase
     {
+
         private readonly IMessageService _messageService;
         private readonly IMapper _mapper;
         public MessageController(IMessageService messageService, IMapper mapper)
