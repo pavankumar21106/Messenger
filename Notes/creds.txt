@@ -1,0 +1,5 @@
+###############################################
+"DefaultConnection": "Server=127.0.0.1;Port=5432;Database=Messanger_Test;User Id=postgres;Password=qwerty;Include Error Detail=true",
+"DefaultConnection": "Server=(localdb)\\MSSQLLocalDB;Database=Messanger_Test;Trusted_Connection=True";Include Error Detail=true
+"DefaultConnection": "Server=(localdb)\\MSSQLLocalDB;Database=Messanger_Test;User Id=Dev;Password=Dev@123;Include Error Detail=true"
+###############################################

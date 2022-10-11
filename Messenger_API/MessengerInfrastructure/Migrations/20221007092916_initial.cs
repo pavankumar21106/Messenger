@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -23,7 +22,7 @@ namespace MessengerInfrastructure.Migrations
                     ToName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
                     Title = table.Column<string>(type: "character varying(1024)", maxLength: 1024, nullable: false),
                     Message = table.Column<string>(type: "text", nullable: false),
-                    Attachments = table.Column<List<string>>(type: "text[]", nullable: false),
+                    Attachments = table.Column<string>(type: "text", nullable: false),
                     IsDeleted = table.Column<bool>(type: "boolean", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)

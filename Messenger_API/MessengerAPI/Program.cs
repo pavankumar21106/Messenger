@@ -18,8 +18,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IMessageService, MessageService>();
 builder.Services.AddScoped<IMailService, MailService>();
-//builder.Services.AddDbContext<MessageDbContext>(options => options.UseNpgsql("name=ConnectionStrings:DefaultConnection"));
-builder.Services.AddDbContext<MessageDbContext>(options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection"));
+builder.Services.AddDbContext<MessageDbContext>(options => options.UseNpgsql("name=ConnectionStrings:DefaultConnection"));
+//builder.Services.AddDbContext<MessageDbContext>(options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection"));
 
 builder.Services.AddAutoMapper(typeof(ModelAutoMapperProfile), typeof(DTOAutoMapperProfile));
 var app = builder.Build();

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessengerAPI", "MessengerAPI.csproj", "{A1362399-150E-49BD-BFF2-19204D9CB324}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessengerAPI", "MessengerAPI.csproj", "{A1362399-150E-49BD-BFF2-19204D9CB324}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{C64A34A2-3541-4234-A84A-9C06B3673D4A}"
 EndProject
@@ -11,9 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{3BE81F37-1044-4A52-8B1B-9F1E73AA3502}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessengerService", "..\MessengerService\MessengerService.csproj", "{B13A2D2E-EDD7-4839-AC6B-AA8323352F32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessengerService", "..\MessengerService\MessengerService.csproj", "{B13A2D2E-EDD7-4839-AC6B-AA8323352F32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessengerInfrastructure", "..\MessengerInfrastructure\MessengerInfrastructure.csproj", "{DC8AFDDF-BC8F-4C83-BB61-300363C67284}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessengerInfrastructure", "..\MessengerInfrastructure\MessengerInfrastructure.csproj", "{DC8AFDDF-BC8F-4C83-BB61-300363C67284}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
