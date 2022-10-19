@@ -1,0 +1,30 @@
+For Postgre Database backups:
+
+####################################################
+With out including create data base:
+
+pg_dump -U postgres -d Wharm_Dev -f dumpfilename.sql
+
+psql -U postgres -d backup_test -f dumpfilename.sql
+
+####################################################
+With  including create data base:
+
+pg_dump -U postgres -C -d Wharm_Dev -f dumpfilename.sql
+
+psql -U postgres -f dumpfilename.sql
+
+####################################################
+ for remote server:
+With  including create data base and ignoring roles and privileges:
+
+pg_dump -U secondary_user -O -x -h wharmdb.postgres.database.azure.com -C -d wharm_dev -f wharm_dev1410.sql
+
+psql -U postgres -f wharm_dev1410.sql
+
+####################################################
+
+for deleting committed git ignore files 
+
+git rm -r --cached <FileName>
+####################################################

@@ -3,6 +3,7 @@ using System;
 using MessengerInfrastructure.MessageContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MessengerInfrastructure.Migrations
 {
     [DbContext(typeof(MessageDbContext))]
-    partial class MessageDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221018143049_testing_seeding_with_loop")]
+    partial class testing_seeding_with_loop
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -80,7 +82,7 @@ namespace MessengerInfrastructure.Migrations
                         {
                             Id = 10,
                             Attachment = "Attachments",
-                            CreatedDate = new DateTime(2022, 10, 18, 14, 34, 15, 840, DateTimeKind.Utc).AddTicks(6802),
+                            CreatedDate = new DateTime(2022, 10, 18, 14, 30, 49, 550, DateTimeKind.Utc).AddTicks(5879),
                             From = "TestFrom@gmail.com",
                             FromName = "FromName",
                             IsDeleted = false,
@@ -88,27 +90,27 @@ namespace MessengerInfrastructure.Migrations
                             Title = "Title",
                             To = "testTo@gmail.com",
                             ToName = "ToName",
-                            UpdatedDate = new DateTime(2022, 10, 18, 14, 34, 15, 840, DateTimeKind.Utc).AddTicks(6805)
+                            UpdatedDate = new DateTime(2022, 10, 18, 14, 30, 49, 550, DateTimeKind.Utc).AddTicks(5880)
                         },
                         new
                         {
                             Id = 11,
                             Attachment = "11Attachments",
-                            CreatedDate = new DateTime(2022, 10, 18, 14, 34, 15, 840, DateTimeKind.Utc).AddTicks(6808),
+                            CreatedDate = new DateTime(2022, 10, 18, 14, 30, 49, 550, DateTimeKind.Utc).AddTicks(5884),
                             From = "11TestFrom@gmail.com",
                             FromName = "11FromName",
                             IsDeleted = false,
                             Message = "11Message",
                             Title = "11Title",
                             To = "11testTo@gmail.com",
-                            ToName = "1ToName",
-                            UpdatedDate = new DateTime(2022, 10, 18, 14, 34, 15, 840, DateTimeKind.Utc).AddTicks(6808)
+                            ToName = "11ToName",
+                            UpdatedDate = new DateTime(2022, 10, 18, 14, 30, 49, 550, DateTimeKind.Utc).AddTicks(5884)
                         },
                         new
                         {
                             Id = 12,
                             Attachment = "12Attachments",
-                            CreatedDate = new DateTime(2022, 10, 18, 14, 34, 15, 840, DateTimeKind.Utc).AddTicks(6812),
+                            CreatedDate = new DateTime(2022, 10, 18, 14, 30, 49, 550, DateTimeKind.Utc).AddTicks(5887),
                             From = "12TestFrom@gmail.com",
                             FromName = "12FromName",
                             IsDeleted = false,
@@ -116,7 +118,7 @@ namespace MessengerInfrastructure.Migrations
                             Title = "12Title",
                             To = "12testTo@gmail.com",
                             ToName = "12ToName",
-                            UpdatedDate = new DateTime(2022, 10, 18, 14, 34, 15, 840, DateTimeKind.Utc).AddTicks(6812)
+                            UpdatedDate = new DateTime(2022, 10, 18, 14, 30, 49, 550, DateTimeKind.Utc).AddTicks(5888)
                         });
                 });
 #pragma warning restore 612, 618
