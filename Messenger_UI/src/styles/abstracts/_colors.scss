@@ -1,0 +1,36 @@
+.white{
+    color: $white;
+}
+.dark-black{
+    color: $dark-black;
+}
+.prussian-blue{
+    color: $prussian-blue;
+}
+.cerulean-blue{
+    color: $cerulean-blue;
+}
+.deep-sky-blue{
+    color: $deep-sky-blue;
+}
+
+.bg-white{
+    background-color: $white;
+    color: $dark-black;
+}
+.bg-dark-black{
+    background-color: $dark-black;
+    color: $white;
+}
+.bg-prussian-blue{
+    background-color: $prussian-blue;
+    color: $white;
+}
+.bg-cerulean-blue{
+    background-color: $cerulean-blue;
+    color: $white;
+}
+.bg-deep-sky-blue{
+    background-color: $deep-sky-blue;
+    color: $white;
+}
