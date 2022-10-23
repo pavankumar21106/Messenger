@@ -1,9 +1,10 @@
-html,body{
+html,
+body {
     height: 100%;
     font-size: 16px;
 }
 
-.center{
+.center {
     display: flex;
     text-align: center;
     align-items: center;
@@ -11,23 +12,51 @@ html,body{
     justify-content: center;
 }
 
-.container{
+.container {
+    font-size: 10px;
     height: 100%;
     overflow: auto;
 }
 
-.input{
+.input {
     height: 8px;
     width: 90px;
     font-size: 4px;
     margin: 7px 0px 0px 0px;
-    
-    border-width: 0.8px;
+
     border-radius: 3px;
-    border-color: black;
+    border: 0.8px solid black;
+    outline: none;
+
 }
 
-.button{
+.no-border-input {
+    height: 8px;
+    width: 90px;
+    font-size: 4px;
+    margin: 7px 0px 0px 0px;
+
+    border-radius: 3px;
+    border: 0.3px solid;
+    outline: none;
+
+}
+
+textarea{
+    width: 150px;
+    height: 100px;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 0.3px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 5px !important;
+    outline: none;
+    resize: none;
+    margin: 5px 0 0 0 !important;
+}
+
+.button {
     height: 15px;
     width: 60px;
     font-size: 10px;
@@ -37,8 +66,12 @@ html,body{
     align-content: center;
     justify-content: center;
     align-items: center;
-   
+
     border-width: 0.8px;
     border-radius: 3px;
     border-color: black;
+}
+
+.block {
+    display: block;
 }
