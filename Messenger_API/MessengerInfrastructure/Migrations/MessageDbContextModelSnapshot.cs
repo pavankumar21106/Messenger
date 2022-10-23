@@ -30,7 +30,7 @@ namespace MessengerInfrastructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Attachment")
+                    b.Property<string>("Attachments")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -55,6 +55,7 @@ namespace MessengerInfrastructure.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasMaxLength(1024)
                         .HasColumnType("character varying(1024)");
 
@@ -74,50 +75,6 @@ namespace MessengerInfrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Message", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 10,
-                            Attachment = "Attachments",
-                            CreatedDate = new DateTime(2022, 10, 18, 14, 34, 15, 840, DateTimeKind.Utc).AddTicks(6802),
-                            From = "TestFrom@gmail.com",
-                            FromName = "FromName",
-                            IsDeleted = false,
-                            Message = "Message",
-                            Title = "Title",
-                            To = "testTo@gmail.com",
-                            ToName = "ToName",
-                            UpdatedDate = new DateTime(2022, 10, 18, 14, 34, 15, 840, DateTimeKind.Utc).AddTicks(6805)
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Attachment = "11Attachments",
-                            CreatedDate = new DateTime(2022, 10, 18, 14, 34, 15, 840, DateTimeKind.Utc).AddTicks(6808),
-                            From = "11TestFrom@gmail.com",
-                            FromName = "11FromName",
-                            IsDeleted = false,
-                            Message = "11Message",
-                            Title = "11Title",
-                            To = "11testTo@gmail.com",
-                            ToName = "1ToName",
-                            UpdatedDate = new DateTime(2022, 10, 18, 14, 34, 15, 840, DateTimeKind.Utc).AddTicks(6808)
-                        },
-                        new
-                        {
-                            Id = 12,
-                            Attachment = "12Attachments",
-                            CreatedDate = new DateTime(2022, 10, 18, 14, 34, 15, 840, DateTimeKind.Utc).AddTicks(6812),
-                            From = "12TestFrom@gmail.com",
-                            FromName = "12FromName",
-                            IsDeleted = false,
-                            Message = "12Message",
-                            Title = "12Title",
-                            To = "12testTo@gmail.com",
-                            ToName = "12ToName",
-                            UpdatedDate = new DateTime(2022, 10, 18, 14, 34, 15, 840, DateTimeKind.Utc).AddTicks(6812)
-                        });
                 });
 #pragma warning restore 612, 618
         }

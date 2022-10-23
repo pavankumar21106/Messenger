@@ -31,63 +31,13 @@ namespace MessengerInfrastructure.MessageContext
                 entity.Property(e => e.Title).HasMaxLength(1024);
                 entity.HasQueryFilter(e => e.IsDeleted == false);
 
-                entity.Property(e => e.Attachment).HasConversion(
+                entity.Property(e => e.Attachments).HasConversion(
                     v => string.Join(';', v),
                     v => v.Split(',', StringSplitOptions.RemoveEmptyEntries).ToList());
             });
 
 
-            var list = new List<MessageEntity>();
-            list.Add(new MessageEntity
-            {
-                Id = 10,
-                From = "TestFrom@gmail.com",
-                To = "testTo@gmail.com",
-                Attachment = new List<string> { "Attachments" },
-                Message = "Message",
-                CreatedDate = DateTime.UtcNow,
-                FromName = "FromName",
-                Title = "Title",
-                ToName = "ToName",
-                UpdatedDate = DateTime.UtcNow,
-                IsDeleted = false,
-            });
-
-            list.Add(new MessageEntity
-            {
-                Id = 11,
-                From = "11TestFrom@gmail.com",
-                To = "11testTo@gmail.com",
-                Attachment = new List<string> { "11Attachments" },
-                Message = "11Message",
-                CreatedDate = DateTime.UtcNow,
-                FromName = "11FromName",
-                Title = "11Title",
-                ToName = "1ToName",
-                UpdatedDate = DateTime.UtcNow,
-                IsDeleted = false,
-            });
-
-            list.Add(new MessageEntity
-            {
-                Id = 12,
-                From = "12TestFrom@gmail.com",
-                To = "12testTo@gmail.com",
-                Attachment = new List<string> { "12Attachments" },
-                Message = "12Message",
-                CreatedDate = DateTime.UtcNow,
-                FromName = "12FromName",
-                Title = "12Title",
-                ToName = "12ToName",
-                UpdatedDate = DateTime.UtcNow,
-                IsDeleted = false,
-            });
-
-            foreach (var item in list)
-            {
-                modelBuilder.Entity<MessageEntity>().HasData(item);
-            }
-
         }
+
     }
 }

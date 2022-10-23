@@ -24,9 +24,9 @@ namespace MessengerInfrastructure.MailService
             emailMessage.To.Add(new MailboxAddress(message.ToName, message.To));
             emailMessage.Subject = message.Title;
             var bodyBuilder = new BodyBuilder();
-            if (message.Attachment.Count > 0)
+            if (message.Attachments.Count > 0)
             {
-                foreach (var attachment in message.Attachment)
+                foreach (var attachment in message.Attachments)
                 {
                     //bodyBuilder.LinkedResources.Add(@"D:\Trainings\MailService\MailServiceAPI\images\mail-header-solid.png");
                     bodyBuilder.Attachments.Add(@$"{attachment}");
