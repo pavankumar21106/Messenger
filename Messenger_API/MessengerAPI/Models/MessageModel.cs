@@ -15,7 +15,7 @@ namespace MessengerAPI.Models
         public List<string> Attachments { get; set; }
     }
 
-    public class BaseMessageResponseModel:  BaseEntity
+    public class BaseMessageResponseModel:  BaseModel
     {
 
     }
@@ -23,5 +23,4 @@ namespace MessengerAPI.Models
     {
 
     }
-
 }

@@ -17,6 +17,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IMessageService, MessageService>();
+builder.Services.AddScoped<ISSOService, SSOService>();
+builder.Services.AddScoped<ILoginService, LoginService>();
 builder.Services.AddScoped<IMailService, MailService>();
 builder.Services.AddDbContext<MessageDbContext>(options => options.UseNpgsql("name=ConnectionStrings:DefaultConnection"));
 //builder.Services.AddDbContext<MessageDbContext>(options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection"));

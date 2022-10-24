@@ -7,6 +7,8 @@ import { LoginComponent } from './modules/login/login.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { InboxComponent } from './modules/inbox/inbox.component';
 import { ComposeComponent } from './modules/compose/compose.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { ComposeComponent } from './modules/compose/compose.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CommonModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

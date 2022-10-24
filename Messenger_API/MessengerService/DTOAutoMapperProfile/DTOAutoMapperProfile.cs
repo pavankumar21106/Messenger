@@ -16,6 +16,8 @@ namespace MessengerService.DTOAutoMapperProfile
         {
             CreateMap<Result<MessageEntity>, Result<MessageDTO>>().ReverseMap();
             CreateMap<MessageEntity, MessageDTO>().ReverseMap();
+            CreateMap<UserDTO, UserEntity>();
+
         }
     }
 }
