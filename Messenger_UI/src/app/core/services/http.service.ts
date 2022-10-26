@@ -1,9 +1,13 @@
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
-export class HttpClientService {
+@Injectable({
+  providedIn: 'root'
+})
+export class HttpService {
 
-    constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
     post<T>(slug: string, data: any, headers?: HttpHeaders | { [header: string]: string | string[] }) {
         return this.httpClient.post<T>(`${environment.BaseUrl}${slug}`, data, { headers: headers });

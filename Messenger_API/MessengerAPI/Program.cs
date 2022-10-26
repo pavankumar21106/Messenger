@@ -23,6 +23,17 @@ builder.Services.AddScoped<IMailService, MailService>();
 builder.Services.AddDbContext<MessageDbContext>(options => options.UseNpgsql("name=ConnectionStrings:DefaultConnection"));
 //builder.Services.AddDbContext<MessageDbContext>(options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection"));
 
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", builder => builder
+    .AllowAnyOrigin()
+    .AllowAnyHeader()
+    .AllowAnyMethod()
+    );
+});
+
+
 builder.Services.AddAutoMapper(typeof(ModelAutoMapperProfile), typeof(DTOAutoMapperProfile));
 var app = builder.Build();
 
@@ -32,6 +43,7 @@ if (app.Environment.IsDevelopment())
 }
 app.UseSwagger();
 app.UseSwaggerUI();
+app.UseCors("AllowAll");
 
 app.UseHttpsRedirection();
 

@@ -1,0 +1,8 @@
+############################
+
+for opening windows fire wall inbound and outbound rules 
+
+execute in windows run
+firewall.cpl
+
+############################

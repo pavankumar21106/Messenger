@@ -1,4 +1,5 @@
 export const slugs={
-    Login:"Login/login",
-    GetMessages:"Message/GetMessages"
+    Login:"Login/sign-in",
+    GetMessages:"Message/GetMessages",
+    Compose:"Message/SendMessage"
 }

@@ -36,7 +36,7 @@ namespace MessengerInfrastructure.MessageContext
                 entity.HasQueryFilter(e => e.IsDeleted == false);
 
 
-                entity.Property(e => e.Attachments).HasConversion(
+                entity.Property(e => e.Attachment).HasConversion(
                     v => string.Join(';', v),
                     v => v.Split(',', StringSplitOptions.RemoveEmptyEntries).ToList());
             });

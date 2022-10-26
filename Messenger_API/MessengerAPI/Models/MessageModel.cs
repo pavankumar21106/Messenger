@@ -12,7 +12,7 @@ namespace MessengerAPI.Models
         public string ToName { get; set; } = null!;
         public string Title { get; set; } = null!;
         public string Message { get; set; } = null!;
-        public List<string> Attachments { get; set; }
+        public List<string> Attachment { get; set; }
     }
 
     public class BaseMessageResponseModel:  BaseModel
