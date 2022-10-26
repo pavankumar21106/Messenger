@@ -29,7 +29,7 @@ namespace MessengerInfrastructure.MessageContext
                 entity.Property(e => e.ToName).HasMaxLength(256);
                 entity.Property(e => e.From).HasMaxLength(256);
                 entity.Property(e => e.FromName).HasMaxLength(256);
-                entity.Property(e => e.Title).HasMaxLength(1024);
+                entity.Property(e => e.Subject).HasMaxLength(1024);
 
                 entity.Property(e => e.IsDeleted).HasDefaultValue(false);
                 entity.Property(e => e.UpdatedDate).HasDefaultValue(DateTime.UtcNow);

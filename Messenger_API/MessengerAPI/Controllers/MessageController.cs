@@ -21,7 +21,7 @@ namespace MailServiceAPI.Controllers
             _mapper = mapper;
         }
         [HttpPost("SendMessage")]
-        public async Task<ActionResult<MessageDTO>> SendMessageAsync(MessageModel message)
+        public async Task<ActionResult<MessageModel>> SendMessageAsync(MessageModel message)
         {
             var messageObj = _mapper.Map<MessageDTO>(message);
 
@@ -33,12 +33,12 @@ namespace MailServiceAPI.Controllers
                 return BadRequest("Error");
             }
 
-            return result.ValueOrDefault;
+            return _mapper.Map<MessageModel>(result.ValueOrDefault);
         }
         [HttpGet("GetMessages")]
-        public async Task<ActionResult<List<MessageDTO>>> GetMessagesAsync()
+        public async Task<ActionResult<List<MessageModel>>> GetMessagesAsync()
         {
-            return await _messageService.GetMessagesAsync();
+            return _mapper.Map<List<MessageModel>>(await _messageService.GetMessagesAsync());
         }
 
         [HttpDelete("DeleteMessage")]

@@ -1,11 +1,23 @@
 <div class="container center">
-    <div class="compose">
-        <span class="block">new message</span>
-        <input class="no-border-input block" type="email" placeholder="To">
-        <input class="no-border-input block" type="text" name="" id="" placeholder="Subject">
-        <textarea name="message-body  block" id="" cols="30" rows="5"></textarea>
-        <button class="button bg-cerulean-blue block">Send</button>
-    </div>
+    <form [formGroup]="expensesForm" (ngSubmit)="onSubmit()">
+        <div class="compose">
+            <span class="block">new message</span>
+            <div class="field">
+                <label for="email">Email : </label>
+                <input class="no-border-input block" type="email" placeholder="To" formControlName="to">
+            </div>
+            <div class="field">
+                <label for="subject">Subject : </label>
+                <input class="no-border-input block" type="text" name="subject" id="" placeholder="Subject"
+                    formControlName="subject">
+            </div>
+            <div class="field">
+                <label for="body">Body : </label>
+                <textarea name="message-body  block" id="body" cols="30" rows="5"
+                    formControlName="body"></textarea>
+            </div>
+        </div>
+        <button class="button bg-cerulean-blue block" type="submit">submit</button>
+    </form>
 </div>
-
 <!-- <button (click)="compose()">Compose</button> -->

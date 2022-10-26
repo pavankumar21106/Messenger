@@ -3,6 +3,7 @@ using System;
 using MessengerInfrastructure.MessageContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MessengerInfrastructure.Migrations
 {
     [DbContext(typeof(MessageDbContext))]
-    partial class MessageDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221026164358_made_attachments_nullable")]
+    partial class made_attachments_nullable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,10 +33,6 @@ namespace MessengerInfrastructure.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Attachment")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Body")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("CreatedBy")
@@ -58,7 +56,11 @@ namespace MessengerInfrastructure.Migrations
                         .HasColumnType("boolean")
                         .HasDefaultValue(false);
 
-                    b.Property<string>("Subject")
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(1024)
                         .HasColumnType("character varying(1024)");
@@ -79,7 +81,7 @@ namespace MessengerInfrastructure.Migrations
                     b.Property<DateTime?>("UpdatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValue(new DateTime(2022, 10, 26, 17, 21, 14, 83, DateTimeKind.Utc).AddTicks(1154));
+                        .HasDefaultValue(new DateTime(2022, 10, 26, 16, 43, 58, 443, DateTimeKind.Utc).AddTicks(8250));
 
                     b.HasKey("Id");
 
@@ -121,7 +123,7 @@ namespace MessengerInfrastructure.Migrations
                     b.Property<DateTime?>("UpdatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValue(new DateTime(2022, 10, 26, 17, 21, 14, 83, DateTimeKind.Utc).AddTicks(3100));
+                        .HasDefaultValue(new DateTime(2022, 10, 26, 16, 43, 58, 443, DateTimeKind.Utc).AddTicks(9653));
 
                     b.Property<string>("UserName")
                         .IsRequired()

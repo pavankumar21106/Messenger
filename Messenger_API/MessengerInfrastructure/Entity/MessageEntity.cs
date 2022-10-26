@@ -2,13 +2,13 @@
 {
     public class MessageEntity:BaseEntity
     {
+        public string From { get; set; } = "Pavan";
+        public string FromName { get; set; } = "pavankumar21106@gmail.com";
         public string To { get; set; } = null!;
-        public string From { get; set; } = null!;
-        public string FromName { get; set; } = null!;
         public string ToName { get; set; } = null!;
-        public string Title { get; set; } = null!;
-        public string Message { get; set; } = null!;
-        public List<string> Attachment { get; set; }
+        public string Subject { get; set; } = null!;
+        public string Body { get; set; } = null!;
+        public List<string>? Attachment { get; set; }
 
 
     }

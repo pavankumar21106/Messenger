@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { map } from 'rxjs';
 import { slugs } from 'src/app/core/constants/api-slug';
 import * as httpService from 'src/app/core/services/http.service';
@@ -11,32 +12,26 @@ import { LoaderService } from 'src/app/shared/loader/loader.service';
 })
 export class ComposeComponent implements OnInit {
 
-  constructor(private readonly _httpClient: httpService.HttpService,private ngxService: LoaderService) { }
-
+  constructor(private readonly _httpClient: httpService.HttpService, private ngxService: LoaderService) { }
 
   ngOnInit() {
-    this.ngxService.start(); 
-    this.ngxService.stop(); 
-    setTimeout(() => {
-    }, 1000);
   }
-
-  data = {
-    "toName": "TestTo",
-    "fromName": "TestFrom",
-    "from": "Test@gmail.com",
-    "to": "pavankumar21106@gmail.com",
-    "title": "string",
-    "message": "This is test",
-  "attachment": [
-  ]
-}
-
-
-  compose(){
-    let temp = this._httpClient.post<any>(slugs.Compose, this.data).pipe(map(res=>res)).subscribe(r=>{
+  
+  onSubmit() {
+    this.ngxService.start();
+    console.log(this.expensesForm);
+    console.log(this.expensesForm.value);
+    let temp = this._httpClient.post<any>(slugs.Compose, this.expensesForm.value).pipe(map(res => res)).subscribe(r => {
       console.log(r);
+      return r;
     });
+      this.ngxService.stop();
   }
 
+  expensesForm = new FormGroup({
+    toName: new FormControl('pavan'),
+    to: new FormControl(''),
+    subject: new FormControl(''),
+    body: new FormControl('')
+  });
 }
