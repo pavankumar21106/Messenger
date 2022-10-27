@@ -16,6 +16,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSingleton<TokenGenarator>();
+builder.Services.AddSingleton<UserTokenGenarator>();
 builder.Services.AddScoped<IMessageService, MessageService>();
 builder.Services.AddScoped<ISSOService, SSOService>();
 builder.Services.AddScoped<ILoginService, LoginService>();
