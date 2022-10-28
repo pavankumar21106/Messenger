@@ -1,7 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { slugs } from 'src/app/core/constants/api-slug';
-import { HttpService } from 'src/app/core/services/http.service';
+import { FormControl, FormGroup } from '@angular/forms';
 import { LoginService } from 'src/app/core/services/login.service';
 
 @Component({
@@ -11,27 +9,28 @@ import { LoginService } from 'src/app/core/services/login.service';
 })
 export class LoginComponent implements OnInit {
 
-
-  constructor(private readonly _httpClient: HttpService, private readonly _logInService: LoginService) { }
+  constructor(private readonly _logInService: LoginService) { }
 
   ngOnInit(): void {
   }
 
-  d = {
-    "email": "test@gmail.com",
-    "userName": "test",
-    "password": "Test@123"
-  };
+  loginForm = new FormGroup({
+    email: new FormControl(''),
+    userName: new FormControl(''),
+    password: new FormControl('')
+  });
+
   isLoggedIn: boolean = false;
 
-  logIn() {
-    let res = this._logInService.logIn(this.d);
+  onSubmit() {
+    console.log(this.loginForm.value);
+    let res = this._logInService.logIn(this.loginForm.value);
     res.subscribe(res => {
+      console.log(res);
       if (res.isSuccess) {
         this.isLoggedIn = true;
       }
     });
     console.log(this.isLoggedIn);
   }
-
 }

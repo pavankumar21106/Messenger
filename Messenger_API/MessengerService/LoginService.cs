@@ -17,6 +17,11 @@ namespace MessengerService
             _sSSOService = sSoService;
         }
 
+        public Result<string> AuthorizeUser(string userToken)
+        {
+            return  _sSSOService.AuthorizeUser(userToken);
+        }
+
         public async Task<Result<string>> LogIn(UserDTO user)
         {
             return await _sSSOService.LogIn(_mapper.Map<UserEntity>(user));

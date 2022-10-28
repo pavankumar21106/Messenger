@@ -19,16 +19,16 @@ export class ComposeComponent implements OnInit {
   
   onSubmit() {
     this.ngxService.start();
-    console.log(this.expensesForm);
-    console.log(this.expensesForm.value);
-    let temp = this._httpClient.post<any>(slugs.Compose, this.expensesForm.value).pipe(map(res => res)).subscribe(r => {
+    console.log(this.composeForm);
+    console.log(this.composeForm.value);
+    let temp = this._httpClient.post<any>(slugs.Compose, this.composeForm.value).pipe(map(res => res)).subscribe(r => {
       console.log(r);
       return r;
     });
       this.ngxService.stop();
   }
 
-  expensesForm = new FormGroup({
+  composeForm = new FormGroup({
     toName: new FormControl('pavan'),
     to: new FormControl(''),
     subject: new FormControl(''),

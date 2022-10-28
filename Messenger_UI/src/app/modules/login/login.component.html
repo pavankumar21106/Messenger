@@ -1,8 +1,17 @@
 <div class="container center">
-    <div class="login">
-        <span class="bg-cerulean-blue">Messanger</span>
-        <input class="input" type="text" placeholder="email">
-        <input class="input" type="password" name="" id="" placeholder="password">
-        <button class="button bg-cerulean-blue" (click)="logIn()">Sign In</button>
-    </div>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="login">
+            <span class="bg-cerulean-blue">Messenger</span>
+            <div class="field">
+                <label for="email">Email : </label>
+                <input class="no-border-input block" type="email" placeholder="Email or userId" formControlName="userName">
+            </div>
+            <div class="field">
+                <label for="subject">Subject : </label>
+                <input class="no-border-input block" type="password" name="" id="" placeholder="password"
+                    formControlName="password">
+            </div>
+        </div>
+        <button class="button bg-cerulean-blue block" type="submit">submit</button>
+    </form>
 </div>

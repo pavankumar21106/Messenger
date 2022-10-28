@@ -17,11 +17,21 @@ namespace MessengerInfrastructure.MailService
         }
         public async Task<Result<string>> LogIn(UserEntity user)
         {
-            if (_messageContext.UserEntity.Where(e => e.UserName == user.UserName || e.Email == user.Email).Where(e => e.Password == user.Password).Any())
+            if (_messageContext.UserEntity.Where(e => e.UserName == user.UserName || e.Email == user.UserName).Where(e => e.Password == user.Password).Any())
             {
                 var token = _userTokenGenarator.GetUserToken(1);
                 var id = _userTokenGenarator.GetUserId(token);
-                return Result.Ok($"success {id} {token}");
+                return Result.Ok(token);
+            }
+            return Result.Fail("user does not exist");
+        }
+        
+        public Result<string> AuthorizeUser(string userToken)
+        {
+            var userId = _userTokenGenarator.GetUserId(userToken);
+            if (_messageContext.UserEntity.Where(e => e.Id == userId).Any())
+            {
+                return Result.Ok();
             }
             return Result.Fail("user does not exist");
         }
