@@ -42,15 +42,19 @@
 @import "themes/flat-theme";
 
 // Vendors
-@import "vendors/bootstrap";
-@import "vendors/owl-carousel";
-@import "vendors/jqueryui";
+@import "vendors/vendors";
 
 
 //remember:tailwind css
 @tailwind base;
+
 @tailwind components;
+
+//remember:for tailwind css in components layer
+@layer components {}
+
 @tailwind utilities;
+
 
 //remember:for ngx table styling
 @import "../../node_modules/@swimlane/ngx-datatable/index.css";
