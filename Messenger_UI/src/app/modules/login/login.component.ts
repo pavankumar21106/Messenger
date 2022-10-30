@@ -22,15 +22,19 @@ export class LoginComponent implements OnInit {
 
   isLoggedIn: boolean = false;
 
-  onSubmit() {
+  async onSubmit() {
     console.log(this.loginForm.value);
+    console.log(Date.now,'s');
     let res = this._logInService.logIn(this.loginForm.value);
     res.subscribe(res => {
+      console.log(Date.now,'i');
       console.log(res);
-      if (res.isSuccess) {
+      if (res) {
         this.isLoggedIn = true;
+        console.log(this.isLoggedIn,'ii');
       }
     });
+    console.log(Date.now,'e');
     console.log(this.isLoggedIn);
   }
 }

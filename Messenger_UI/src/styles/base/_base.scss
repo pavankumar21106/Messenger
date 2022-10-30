@@ -13,65 +13,65 @@ body {
 }
 
 .container {
-    font-size: 10px;
+    font-size: 12px;
     height: 100%;
     overflow: auto;
 }
 
-.input {
-    height: 8px;
-    width: 90px;
-    font-size: 4px;
-    margin: 7px 0px 0px 0px;
+// .input {
+//     height: 8px;
+//     width: 90px;
+//     padding: 10px 13px;
 
-    border-radius: 3px;
-    border: 0.8px solid black;
-    outline: none;
+//     font-size: 4px;
+//     margin: 7px 0px 0px 0px;
 
-}
+//     border-radius: 3px;
+//     border: 0.8px solid black;
+//     outline: none;
 
-.no-border-input {
-    height: 8px;
-    width: 90px;
-    font-size: 4px;
-    margin: 7px 0px 0px 0px;
+// }
 
-    border-radius: 3px;
-    border: 0.3px solid;
-    outline: none;
+// .no-border-input {
+//     height: 43px;
+//     width: 435px;
+//     padding: 10px 13px;
+//     font-size: 14px;
+//     margin: 7px 0px 0px 0px;
+//     border-radius: 3px;
+//     border: 0.3px solid;
+//     outline: none;
 
-}
+// }
 
-textarea{
-    width: 150px;
-    height: 100px;
-    padding: 8px;
-    box-sizing: border-box;
-    border: 0.3px solid #ccc;
-    border-radius: 4px;
-    background-color: #f8f8f8;
-    font-size: 5px !important;
-    outline: none;
-    resize: none;
-    margin: 5px 0 0 0 !important;
-}
+// textarea{
+//     width: 150px;
+//     height: 100px;
+//     padding: 8px;
+//     box-sizing: border-box;
+//     border: 0.3px solid #ccc;
+//     border-radius: 4px;
+//     background-color: #f8f8f8;
+//     font-size: 5px !important;
+//     outline: none;
+//     resize: none;
+//     margin: 5px 0 0 0 !important;
+// }
 
-.button {
-    height: 15px;
-    width: 60px;
-    font-size: 10px;
-    margin: 8px 0 0 0;
+// .button {
+//     height: 30px;
+//     width: 90px;
+//     font-size: 15px;
+//     margin: 8px 0 0 0;
+//     display: flex;
+//     align-content: center;
+//     justify-content: center;
+//     align-items: center;
+//     border-width: 0.8px;
+//     border-radius: 3px;
+//     border-color: black;
+// }
 
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-
-    border-width: 0.8px;
-    border-radius: 3px;
-    border-color: black;
-}
-
-.block {
-    display: block;
-}
+// .block {
+//     display: block;
+// }

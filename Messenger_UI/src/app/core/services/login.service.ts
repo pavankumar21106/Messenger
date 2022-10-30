@@ -12,7 +12,7 @@ export class LoginService {
 
   isLogedIn: boolean = false;
 
-  logIn(userData: any) {
-    return this._httpClient.post<any>(slugs.Login, userData).pipe(map(res=>res));
+  logIn(userData: any,headers?:any) {
+    return this._httpClient.post<string>(slugs.Login, userData,headers).pipe(map(res=>res));
   }
 }

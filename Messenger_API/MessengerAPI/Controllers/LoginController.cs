@@ -20,9 +20,9 @@ namespace MailServiceAPI.Controllers
         }
 
         [HttpPost("sign-in")]
-        public async Task<Result<string>> Login([FromBody] UserModel user)
+        public async Task<object> Login([FromBody] UserModel user)
         {
-            return await _loginService.LogIn(_mapper.Map<UserDTO>(user));
+            return new { Token = (await _loginService.LogIn(_mapper.Map<UserDTO>(user))).ValueOrDefault };
         }
     }
 }
