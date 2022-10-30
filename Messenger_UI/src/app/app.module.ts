@@ -17,6 +17,8 @@ import {
   POSITION,
   PB_DIRECTION,
 } from "ngx-ui-loader";
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { NotFoundComponent } from './utility/not-found/not-found.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   "bgsColor": "#00dce9",
@@ -56,6 +58,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     HeaderComponent,
     InboxComponent,
     ComposeComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,6 +67,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxDatatableModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
 
   ],
