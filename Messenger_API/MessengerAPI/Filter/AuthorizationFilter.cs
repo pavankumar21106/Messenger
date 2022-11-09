@@ -2,6 +2,7 @@
 using MessengerService.IService;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.Extensions.Primitives;
 
 namespace MessengerAPI.Filter
 {
@@ -16,8 +17,13 @@ namespace MessengerAPI.Filter
         }
         public void OnAuthorization(AuthorizationFilterContext context)
         {
+            Console.WriteLine("-------------------------------");
             Console.WriteLine(context);
-            var res = _loginService.AuthorizeUser("y7E2dPB6AGYqzxkXG8ZWaevwVKNR01Or");
+            StringValues UserIdHeader;
+            if(context.ActionDescriptor.AttributeRouteInfo.Template.Contains("sign-in")) return;
+
+            context.HttpContext.Request.Headers.TryGetValue("auth", out  UserIdHeader);
+            var res = _loginService.AuthorizeUser(UserIdHeader.FirstOrDefault()?? "XymxwLveGP5jZzJG0kDYAdV3W210OBnp");
             if (!res.IsSuccess)
             {
                 context.Result = new UnauthorizedResult();

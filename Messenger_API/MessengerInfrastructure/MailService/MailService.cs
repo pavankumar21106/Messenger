@@ -47,7 +47,7 @@ namespace MessengerInfrastructure.MailService
 
             _messageContext.Add(message);
 
-            _messageContext.SaveChangesAsync();
+            await _messageContext.SaveChangesAsync();
 
             return message.ToResult();
         }

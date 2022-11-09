@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/core/services/login.service';
 
 @Component({
@@ -9,7 +10,8 @@ import { LoginService } from 'src/app/core/services/login.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private readonly _logInService: LoginService) { }
+  constructor(private readonly _logInService: LoginService,
+    private _router: Router) { }
 
   ngOnInit(): void {
   }
@@ -30,8 +32,10 @@ export class LoginComponent implements OnInit {
       console.log(Date.now,'i');
       console.log(res);
       if (res) {
+        sessionStorage.setItem('token',res.token);
         this.isLoggedIn = true;
         console.log(this.isLoggedIn,'ii');
+        this._router.navigate(['inbox']);
       }
     });
     console.log(Date.now,'e');

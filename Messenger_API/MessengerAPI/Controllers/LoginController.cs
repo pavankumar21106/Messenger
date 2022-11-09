@@ -3,12 +3,14 @@ using FluentResults;
 using MessengerAPI.Models;
 using MessengerService.DTO;
 using MessengerService.IService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MailServiceAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [AllowAnonymous]
     public class LoginController : ControllerBase
     {
         private readonly IMapper _mapper;
@@ -22,7 +24,12 @@ namespace MailServiceAPI.Controllers
         [HttpPost("sign-in")]
         public async Task<object> Login([FromBody] UserModel user)
         {
-            return new { Token = (await _loginService.LogIn(_mapper.Map<UserDTO>(user))).ValueOrDefault };
+            var res = await _loginService.LogIn(_mapper.Map<UserDTO>(user));
+            if (res.IsFailed)
+            {
+                return res.Reasons;
+            }
+            return new { Token = (res).ValueOrDefault };
         }
     }
 }

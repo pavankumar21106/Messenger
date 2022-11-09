@@ -17,10 +17,11 @@ namespace MessengerInfrastructure.MailService
         }
         public async Task<Result<string>> LogIn(UserEntity user)
         {
-            if (_messageContext.UserEntity.Where(e => e.UserName == user.UserName || e.Email == user.UserName).Where(e => e.Password == user.Password).Any())
+            var userEntity = _messageContext.UserEntity.Where(e => e.UserName == user.UserName || e.Email == user.UserName).Where(e => e.Password == user.Password).FirstOrDefault();
+            var id = userEntity is null ? 0 : userEntity.Id;
+            if (id>0)
             {
-                var token = _userTokenGenarator.GetUserToken(1);
-                var id = _userTokenGenarator.GetUserId(token);
+                var token = _userTokenGenarator.GetUserToken(id);
                 return Result.Ok(token);
             }
             return Result.Fail("user does not exist");
@@ -62,7 +63,7 @@ namespace MessengerInfrastructure.MailService
         private readonly Hashids _hashids;
         public TokenGenarator()
         {
-            _hashids = new Hashids("salt", 32);
+            _hashids = new Hashids("litiIahqWFMhGQesNUbo", 32);
         }
 
         public Hashids GetTokenGenaratorInstance()
