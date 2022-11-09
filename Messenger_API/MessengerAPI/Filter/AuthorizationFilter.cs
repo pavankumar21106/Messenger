@@ -20,10 +20,10 @@ namespace MessengerAPI.Filter
             Console.WriteLine("-------------------------------");
             Console.WriteLine(context);
             StringValues UserIdHeader;
+            context.HttpContext.Request.Headers.TryGetValue("auth", out  UserIdHeader);
             if(context.ActionDescriptor.AttributeRouteInfo.Template.Contains("sign-in")) return;
 
-            context.HttpContext.Request.Headers.TryGetValue("auth", out  UserIdHeader);
-            var res = _loginService.AuthorizeUser(UserIdHeader.FirstOrDefault()?? "XymxwLveGP5jZzJG0kDYAdV3W210OBnp");
+            var res = _loginService.AuthorizeUser(UserIdHeader.FirstOrDefault());
             if (!res.IsSuccess)
             {
                 context.Result = new UnauthorizedResult();

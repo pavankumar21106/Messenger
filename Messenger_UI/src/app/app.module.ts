@@ -7,7 +7,7 @@ import { LoginComponent } from './modules/login/login.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { InboxComponent } from './modules/inbox/inbox.component';
 import { ComposeComponent } from './modules/compose/compose.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
@@ -19,6 +19,7 @@ import {
 } from "ngx-ui-loader";
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NotFoundComponent } from './utility/not-found/not-found.component';
+import { AuthHeaderInterceptor } from './core/services/auth-header.interceptor';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   "bgsColor": "#00dce9",
@@ -71,7 +72,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
 
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass:AuthHeaderInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

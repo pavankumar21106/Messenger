@@ -42,7 +42,7 @@ namespace MessengerInfrastructure.MailService
             client.ServerCertificateValidationCallback = (s, c, h, e) => true;
             client.Connect("smtp.gmail.com", 465, SecureSocketOptions.SslOnConnect);
             client.Authenticate("pavankumar21106@gmail.com", "wueddtqvzgjgukce");
-            //client.Send(emailMessage);
+            client.Send(emailMessage);
             client.Disconnect(true);
 
             _messageContext.Add(message);

@@ -53,7 +53,7 @@ namespace MessengerInfrastructure.MailService
         }
         public int GetUserId(string token)
         {
-            var id = _tokenGenarator.GetTokenGenaratorInstance().DecodeSingle(token);
+            _tokenGenarator.GetTokenGenaratorInstance().TryDecodeSingle(token,out int id);
             return id;
         }
     }
