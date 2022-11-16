@@ -7,7 +7,7 @@ using FluentResults;
 using MessengerInfrastructure.MessageContext;
 using Microsoft.EntityFrameworkCore;
 
-namespace MessengerInfrastructure.MailService
+namespace MessengerInfrastructure.Services
 {
     public class MailService : IMailService
     {
@@ -20,7 +20,7 @@ namespace MessengerInfrastructure.MailService
         {
             
             var emailMessage = new MimeMessage();
-            emailMessage.From.Add(address: new MailboxAddress(message.FromName, message.From));
+            emailMessage.From.Add(new MailboxAddress(message.FromName, message.From));
             emailMessage.To.Add(new MailboxAddress(message.ToName, message.To));
             emailMessage.Subject = message.Subject;
             var bodyBuilder = new BodyBuilder();

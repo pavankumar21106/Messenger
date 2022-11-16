@@ -1,6 +1,6 @@
 using MessengerAPI.Filter;
 using MessengerInfrastructure.IService;
-using MessengerInfrastructure.MailService;
+using MessengerInfrastructure.Services;
 using MessengerInfrastructure.MessageContext;
 using MessengerService;
 using MessengerService.DTOAutoMapperProfile;

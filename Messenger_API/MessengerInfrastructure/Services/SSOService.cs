@@ -2,9 +2,8 @@
 using FluentResults;
 using MessengerInfrastructure.MessageContext;
 using MessengerInfrastructure.IService;
-using HashidsNet;
 
-namespace MessengerInfrastructure.MailService
+namespace MessengerInfrastructure.Services
 {
     public class SSOService : ISSOService
     {
@@ -17,7 +16,7 @@ namespace MessengerInfrastructure.MailService
         }
         public async Task<Result<string>> LogIn(UserEntity user)
         {
-            var userEntity = _messageContext.UserEntity.Where(e => e.UserName == user.UserName || e.Email == user.UserName).Where(e => e.Password == user.Password).FirstOrDefault();
+            var userEntity = _messageContext.UserEntity.Where(e => e.UserName == user.UserName.ToLower() || e.Email == user.UserName.ToLower()).Where(e => e.Password == user.Password).FirstOrDefault();
             var id = userEntity is null ? 0 : userEntity.Id;
             if (id>0)
             {
@@ -35,40 +34,6 @@ namespace MessengerInfrastructure.MailService
                 return Result.Ok();
             }
             return Result.Fail("user does not exist");
-        }
-    }
-
-    public class UserTokenGenarator
-    {
-        private readonly TokenGenarator _tokenGenarator;
-        public UserTokenGenarator(TokenGenarator tokenGenarator)
-        {
-            _tokenGenarator = tokenGenarator;
-        }
-
-        public string GetUserToken(int id)
-        {
-            var token = _tokenGenarator.GetTokenGenaratorInstance().Encode(id);
-            return token;
-        }
-        public int GetUserId(string token)
-        {
-            _tokenGenarator.GetTokenGenaratorInstance().TryDecodeSingle(token,out int id);
-            return id;
-        }
-    }
-
-    public class TokenGenarator
-    {
-        private readonly Hashids _hashids;
-        public TokenGenarator()
-        {
-            _hashids = new Hashids("litiIahqWFMhGQesNUbo", 32);
-        }
-
-        public Hashids GetTokenGenaratorInstance()
-        {
-            return _hashids;
         }
     }
 }

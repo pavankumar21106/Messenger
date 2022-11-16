@@ -14,23 +14,25 @@ export class ComposeComponent implements OnInit {
 
   constructor(private readonly _httpClient: httpService.HttpService,
     private _router: Router) { }
-
+    toEmail = '';
   ngOnInit() {
   }
 
   onSubmit() {
+    this.composeForm.patchValue({
+      toName:this.toEmail.split
+    })
     console.log(this.composeForm);
     console.log(this.composeForm.value);
-    let temp = this._httpClient.post<any>(slugs.Compose, this.composeForm.value).pipe(map(res => res)).subscribe(r => {
+    this._httpClient.post<any>(slugs.Compose, this.composeForm.value).pipe(map(res => res)).subscribe(r => {
       console.log(r);
       this._router.navigate(['inbox']);
-      return r;
     });
   }
 
   composeForm = new FormGroup({
-    toName: new FormControl('pavan'),
     to: new FormControl(''),
+    toName: new FormControl(''),
     subject: new FormControl(''),
     body: new FormControl(''),
     attachment:new FormControl([]),
