@@ -19,7 +19,7 @@ import {
 } from "ngx-ui-loader";
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NotFoundComponent } from './utility/not-found/not-found.component';
-import { AuthHeaderInterceptor } from './core/services/auth-header.interceptor';
+import { jwt } from './core/interceptors/jwt.interceptor';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   "bgsColor": "#00dce9",
@@ -48,8 +48,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   "text": "Loading",
   "textColor": "#FFFFFF",
   "textPosition": "center-center",
-  "maxTime": -1,
-  "minTime": 300
+  // "maxTime": -1,
+  // "minTime": 300
 };
 
 @NgModule({
@@ -72,7 +72,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
 
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass:AuthHeaderInterceptor, multi: true }],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass:jwt, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

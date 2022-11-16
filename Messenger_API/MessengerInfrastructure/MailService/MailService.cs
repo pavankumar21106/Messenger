@@ -18,7 +18,7 @@ namespace MessengerInfrastructure.MailService
         }
         public async Task<Result<MessageEntity>> SendMailAsync(MessageEntity message)
         {
-
+            
             var emailMessage = new MimeMessage();
             emailMessage.From.Add(address: new MailboxAddress(message.FromName, message.From));
             emailMessage.To.Add(new MailboxAddress(message.ToName, message.To));
@@ -42,7 +42,7 @@ namespace MessengerInfrastructure.MailService
             client.ServerCertificateValidationCallback = (s, c, h, e) => true;
             client.Connect("smtp.gmail.com", 465, SecureSocketOptions.SslOnConnect);
             client.Authenticate("pavankumar21106@gmail.com", "wueddtqvzgjgukce");
-            client.Send(emailMessage);
+            await client.SendAsync(emailMessage);
             client.Disconnect(true);
 
             _messageContext.Add(message);

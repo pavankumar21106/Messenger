@@ -6,6 +6,7 @@
     "start": "ng serve -o --port 4201",
     "build": "ng build",
     "watchp": "ng build --watch --configuration production",
+    "watcht": "ng build --watch --configuration test",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
