@@ -20,7 +20,7 @@ export class ComposeComponent implements OnInit {
 
   onSubmit() {
     this.composeForm.patchValue({
-      toName:this.toEmail.split
+      toName:this.toEmail.split('@')[0]
     })
     console.log(this.composeForm);
     console.log(this.composeForm.value);
