@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessengerAPI", "MessengerAPI.csproj", "{A1362399-150E-49BD-BFF2-19204D9CB324}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Messenger.API", "Messenger.API.csproj", "{A1362399-150E-49BD-BFF2-19204D9CB324}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{C64A34A2-3541-4234-A84A-9C06B3673D4A}"
 EndProject
@@ -15,11 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Messenger.Application", "..
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Messenger.Infrastructure", "..\MessengerInfrastructure\Messenger.Infrastructure.csproj", "{DC8AFDDF-BC8F-4C83-BB61-300363C67284}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messenger.Domain", "..\Messenger.Domain\Messenger.Domain.csproj", "{3887D9FA-D3C0-4716-929D-04F4BF4D6409}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Messenger.Domain", "..\Messenger.Domain\Messenger.Domain.csproj", "{3887D9FA-D3C0-4716-929D-04F4BF4D6409}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messenger.Entities", "..\Messenger.Entities\Messenger.Entities.csproj", "{5E4AF24D-2D7C-4E0C-B242-50A44754C5B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Messenger.Entities", "..\Messenger.Entities\Messenger.Entities.csproj", "{5E4AF24D-2D7C-4E0C-B242-50A44754C5B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messenger.DBContext", "..\Messenger.DBContext\Messenger.DBContext.csproj", "{D17EC24D-DF39-4EF4-B30B-C1FCF956036C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Messenger.DBContext", "..\Messenger.DBContext\Messenger.DBContext.csproj", "{D17EC24D-DF39-4EF4-B30B-C1FCF956036C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
