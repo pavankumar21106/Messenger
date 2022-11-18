@@ -7,7 +7,7 @@ import {
 } from '@angular/common/http';
 import { finalize, Observable, tap } from 'rxjs';
 import { Router } from '@angular/router';
-import { LoaderService } from 'src/app/shared/loader/loader.service';
+import { LoaderService } from 'src/app/utility/services/loader/loader.service';
 
 @Injectable()
 export class jwt implements HttpInterceptor {

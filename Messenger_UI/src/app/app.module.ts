@@ -20,6 +20,7 @@ import {
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NotFoundComponent } from './utility/not-found/not-found.component';
 import { jwt } from './core/interceptors/jwt.interceptor';
+import { ToHtmlPipe } from './utility/pipes/to-html.pipe';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   "bgsColor": "#00dce9",
@@ -60,6 +61,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     InboxComponent,
     ComposeComponent,
     NotFoundComponent,
+    ToHtmlPipe,
   ],
   imports: [
     BrowserModule,

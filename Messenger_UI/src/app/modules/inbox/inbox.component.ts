@@ -59,6 +59,13 @@ export class InboxComponent implements OnInit {
   }
 
   rows = [];
+
+  onActivate(event:any) {
+    if(event.type == 'click') {
+        console.log(event.row);
+        console.log(event);
+    }
+}
 }
 
 

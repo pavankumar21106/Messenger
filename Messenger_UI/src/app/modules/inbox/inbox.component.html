@@ -1,5 +1,5 @@
 <div class="container c-center">
-    <div class="w-4/6 h-5/6"> 
+    <div class="w-4/6 h-5/6">
         <ngx-datatable
         class="material"
         [rows]="mails"
@@ -9,6 +9,7 @@
         [footerHeight]="50"
         rowHeight="auto"
         [limit]="10"
+        (activate)="onActivate($event)"
       >
       </ngx-datatable>
     </div>
