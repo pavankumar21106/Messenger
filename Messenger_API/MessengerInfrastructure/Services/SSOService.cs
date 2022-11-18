@@ -1,6 +1,6 @@
 ﻿using MessengerInfrastructure.Entity;
 using FluentResults;
-using MessengerInfrastructure.MessageContext;
+using Messenger.DBContext;
 using MessengerInfrastructure.IService;
 
 namespace MessengerInfrastructure.Services

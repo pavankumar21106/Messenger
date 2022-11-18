@@ -1,0 +1,9 @@
+
+Ngrok setup:
+
+choco install ngrok
+
+ngrok config add-authtoken <TOKEN>
+
+
+ngrok http --host-header=rewrite  <port no>

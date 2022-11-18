@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MessengerService.DTOAutoMapperProfile
+namespace Messenger.Domain
 {
     public class DTOAutoMapperProfile : Profile
     {

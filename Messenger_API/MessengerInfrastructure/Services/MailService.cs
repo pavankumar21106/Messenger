@@ -4,7 +4,7 @@ using MimeKit;
 using MessengerInfrastructure.Entity;
 using MessengerInfrastructure.IService;
 using FluentResults;
-using MessengerInfrastructure.MessageContext;
+using Messenger.DBContext;
 using Microsoft.EntityFrameworkCore;
 
 namespace MessengerInfrastructure.Services
@@ -18,7 +18,7 @@ namespace MessengerInfrastructure.Services
         }
         public async Task<Result<MessageEntity>> SendMailAsync(MessageEntity message)
         {
-            
+
             var emailMessage = new MimeMessage();
             emailMessage.From.Add(new MailboxAddress(message.FromName, message.From));
             emailMessage.To.Add(new MailboxAddress(message.ToName, message.To));

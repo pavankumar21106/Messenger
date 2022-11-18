@@ -1,9 +1,9 @@
 using MessengerAPI.Filter;
 using MessengerInfrastructure.IService;
 using MessengerInfrastructure.Services;
-using MessengerInfrastructure.MessageContext;
+using Messenger.DBContext;
 using MessengerService;
-using MessengerService.DTOAutoMapperProfile;
+using Messenger.Domain;
 using MessengerService.IService;
 using MessengerService.ModelAutoMapperProfile;
 using Microsoft.EntityFrameworkCore;

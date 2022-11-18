@@ -7,13 +7,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessengerAPI", "MessengerAP
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{C64A34A2-3541-4234-A84A-9C06B3673D4A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{AEA8A966-4920-4123-9483-6C9708D9696B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{AEA8A966-4920-4123-9483-6C9708D9696B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{3BE81F37-1044-4A52-8B1B-9F1E73AA3502}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessengerService", "..\MessengerService\MessengerService.csproj", "{B13A2D2E-EDD7-4839-AC6B-AA8323352F32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Messenger.Application", "..\MessengerService\Messenger.Application.csproj", "{B13A2D2E-EDD7-4839-AC6B-AA8323352F32}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessengerInfrastructure", "..\MessengerInfrastructure\MessengerInfrastructure.csproj", "{DC8AFDDF-BC8F-4C83-BB61-300363C67284}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Messenger.Infrastructure", "..\MessengerInfrastructure\Messenger.Infrastructure.csproj", "{DC8AFDDF-BC8F-4C83-BB61-300363C67284}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messenger.Domain", "..\Messenger.Domain\Messenger.Domain.csproj", "{3887D9FA-D3C0-4716-929D-04F4BF4D6409}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messenger.Entities", "..\Messenger.Entities\Messenger.Entities.csproj", "{5E4AF24D-2D7C-4E0C-B242-50A44754C5B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messenger.DBContext", "..\Messenger.DBContext\Messenger.DBContext.csproj", "{D17EC24D-DF39-4EF4-B30B-C1FCF956036C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +39,18 @@ Global
 		{DC8AFDDF-BC8F-4C83-BB61-300363C67284}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC8AFDDF-BC8F-4C83-BB61-300363C67284}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC8AFDDF-BC8F-4C83-BB61-300363C67284}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3887D9FA-D3C0-4716-929D-04F4BF4D6409}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3887D9FA-D3C0-4716-929D-04F4BF4D6409}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3887D9FA-D3C0-4716-929D-04F4BF4D6409}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3887D9FA-D3C0-4716-929D-04F4BF4D6409}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E4AF24D-2D7C-4E0C-B242-50A44754C5B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E4AF24D-2D7C-4E0C-B242-50A44754C5B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E4AF24D-2D7C-4E0C-B242-50A44754C5B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E4AF24D-2D7C-4E0C-B242-50A44754C5B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D17EC24D-DF39-4EF4-B30B-C1FCF956036C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D17EC24D-DF39-4EF4-B30B-C1FCF956036C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D17EC24D-DF39-4EF4-B30B-C1FCF956036C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D17EC24D-DF39-4EF4-B30B-C1FCF956036C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,6 +59,9 @@ Global
 		{A1362399-150E-49BD-BFF2-19204D9CB324} = {C64A34A2-3541-4234-A84A-9C06B3673D4A}
 		{B13A2D2E-EDD7-4839-AC6B-AA8323352F32} = {AEA8A966-4920-4123-9483-6C9708D9696B}
 		{DC8AFDDF-BC8F-4C83-BB61-300363C67284} = {3BE81F37-1044-4A52-8B1B-9F1E73AA3502}
+		{3887D9FA-D3C0-4716-929D-04F4BF4D6409} = {AEA8A966-4920-4123-9483-6C9708D9696B}
+		{5E4AF24D-2D7C-4E0C-B242-50A44754C5B9} = {AEA8A966-4920-4123-9483-6C9708D9696B}
+		{D17EC24D-DF39-4EF4-B30B-C1FCF956036C} = {3BE81F37-1044-4A52-8B1B-9F1E73AA3502}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AEBDBDC6-305D-49CC-987A-452D0E9BDC82}

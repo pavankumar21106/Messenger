@@ -1,7 +1,7 @@
 ﻿using MessengerInfrastructure.Entity;
 using Microsoft.EntityFrameworkCore;
 
-namespace MessengerInfrastructure.MessageContext
+namespace Messenger.DBContext
 {
     public class MessageDbContext : DbContext
     {

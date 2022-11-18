@@ -17,8 +17,6 @@ namespace MessengerAPI.Filter
         }
         public void OnAuthorization(AuthorizationFilterContext context)
         {
-            Console.WriteLine("-------------------------------");
-            Console.WriteLine(context);
             StringValues UserIdHeader;
             context.HttpContext.Request.Headers.TryGetValue("auth", out  UserIdHeader);
             if(context.ActionDescriptor.AttributeRouteInfo.Template.Contains("sign-in")) return;
@@ -27,7 +25,6 @@ namespace MessengerAPI.Filter
             if (!res.IsSuccess)
             {
                 context.Result = new UnauthorizedResult();
-                //context.Result = new JsonResult("Permission denined!");
                 return;
             }
         }
