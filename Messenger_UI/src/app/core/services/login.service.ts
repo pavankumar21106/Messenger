@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { Router } from '@angular/router';
 import { slugs } from '../constants/api-slug';
 import { HttpService } from './http.service';
 
@@ -8,11 +8,37 @@ import { HttpService } from './http.service';
 })
 export class LoginService {
 
-  constructor(private readonly _httpClient: HttpService) { }
+  isLoggedIn:LoginClass;
+  constructor(private readonly _httpClient: HttpService, private _router: Router) {
+    this.isLoggedIn = new LoginClass(false);
+    let token = sessionStorage.getItem('token') ?? "";
+    this.isLoggedIn.isLoggedIn = token.length>0 ?  true : false;
+   }
 
-  isLogedIn: boolean = false;
 
-  logIn(userData: any,headers?:any) {
-    return this._httpClient.post<any>(slugs.Login, userData,headers).pipe(map(res=>res));
+  logIn(userData: any, headers?: any) {
+    return new Promise((resolve) => {
+      this._httpClient.post<any>(slugs.Login, userData, headers).subscribe(res => {
+        if (res.token) {
+          sessionStorage.setItem('token', res.token);
+          this.isLoggedIn.isLoggedIn = true;
+          resolve(this.isLoggedIn)
+        }
+      }
+      )
+    })
+  }
+
+  logOut() {
+    sessionStorage.removeItem('token');
+    this._router.navigate(['login']);
+    this.isLoggedIn.isLoggedIn = false;
   }
 }
+export class LoginClass {
+  constructor(isLoggedIn: boolean) {
+    this.isLoggedIn = isLoggedIn;
+  }
+  isLoggedIn: boolean;
+}
+

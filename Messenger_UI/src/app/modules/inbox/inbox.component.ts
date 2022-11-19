@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { map } from 'rxjs';
 import { slugs } from 'src/app/core/constants/api-slug';
 import * as httpService from 'src/app/core/services/http.service';
 import {
   ColumnMode,
-  SelectionType,
-  TableColumn,
 } from '@swimlane/ngx-datatable';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-inbox',
   templateUrl: './inbox.component.html',
@@ -14,60 +14,40 @@ import {
 })
 export class InboxComponent implements OnInit {
 
-  public tableHeaders: TableColumn[] = [];
-  public ColumnMode = ColumnMode;
+  @ViewChild('myTable') table: any;
+  rows: any[] = [];
+  expanded: any = {};
+  timeout: any;
   public mails: Mails[] = [];
-  public selectionType = SelectionType;
+  ColumnMode = ColumnMode;
+
+  constructor(private readonly _httpClient: httpService.HttpService,private toastr: ToastrService) {}
 
 
-  constructor(private readonly _httpClient: httpService.HttpService,) { }
+  openSnackBar() {
+    this.toastr.success('Hello world!', 'Toastr fun!');
 
+  }
   ngOnInit(): void {
-
     let temp = this._httpClient.get<any>(slugs.GetMessages).pipe(map(res => res)).subscribe(r => {
       console.log(r);
       this.mails = r;
       console.log(this.mails);
-
       return r;
     });
-
-    this.tableHeaders = [
-      {
-        name: 'toName',
-        sortable: false,
-        prop: 'toName',
-        resizeable: false,
-        draggable: false,
-      },
-
-      {
-        name: 'subject',
-        prop: 'subject',
-        resizeable: false,
-        sortable: false,
-        draggable: false,
-      },
-      {
-        name: 'body',
-        prop: 'body',
-        resizeable: false,
-        sortable: false,
-        draggable: false,
-      },
-    ];
   }
 
-  rows = [];
+  toggleExpandRow(row: any) {
+    this.openSnackBar();
+    console.log('Toggled Expand Row!', row);
+    this.table.rowDetail.toggleExpandRow(row);
+  }
 
-  onActivate(event:any) {
-    if(event.type == 'click') {
-        console.log(event.row);
-        console.log(event);
-    }
-}
-}
+  onDetailToggle(event: any) {
+    console.log('Detail Toggled', event);
+  }
 
+}
 
 export interface Mails {
   to: string

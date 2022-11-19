@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardService } from './core/services/auth-guard.service';
 import { HomeScreenService } from './core/services/home-screen.service';
+import { MainComponent } from './layouts/main/main.component';
 import { ComposeComponent } from './modules/compose/compose.component';
 import { InboxComponent } from './modules/inbox/inbox.component';
 import { LoginComponent } from './modules/login/login.component';

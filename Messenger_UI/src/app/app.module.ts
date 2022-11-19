@@ -21,6 +21,11 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NotFoundComponent } from './utility/not-found/not-found.component';
 import { jwt } from './core/interceptors/jwt.interceptor';
 import { ToHtmlPipe } from './utility/pipes/to-html.pipe';
+import { MainComponent } from './layouts/main/main.component';
+import { TextHidePipe } from './utility/pipes/text-hide.pipe';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   "bgsColor": "#00dce9",
@@ -62,16 +67,22 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     ComposeComponent,
     NotFoundComponent,
     ToHtmlPipe,
+    MainComponent,
+    TextHidePipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CommonModule,
+   BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     NgxDatatableModule,
+    MatSnackBarModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
+    ToastrModule.forRoot(), // ToastrModule added
+
 
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass:jwt, multi: true }],
