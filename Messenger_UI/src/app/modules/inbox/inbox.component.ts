@@ -5,7 +5,6 @@ import * as httpService from 'src/app/core/services/http.service';
 import {
   ColumnMode,
 } from '@swimlane/ngx-datatable';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-inbox',
@@ -25,8 +24,7 @@ export class InboxComponent implements OnInit {
 
 
   openSnackBar() {
-    this.toastr.success('Hello world!', 'Toastr fun!');
-
+    this.toastr.success('Hello world!');
   }
   ngOnInit(): void {
     let temp = this._httpClient.get<any>(slugs.GetMessages).pipe(map(res => res)).subscribe(r => {

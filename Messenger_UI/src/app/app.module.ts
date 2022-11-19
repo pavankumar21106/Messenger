@@ -23,7 +23,6 @@ import { jwt } from './core/interceptors/jwt.interceptor';
 import { ToHtmlPipe } from './utility/pipes/to-html.pipe';
 import { MainComponent } from './layouts/main/main.component';
 import { TextHidePipe } from './utility/pipes/text-hide.pipe';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
@@ -79,11 +78,13 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     FormsModule,
     ReactiveFormsModule,
     NgxDatatableModule,
-    MatSnackBarModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
-    ToastrModule.forRoot(), // ToastrModule added
-
-
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      closeButton:true,
+      maxOpened:3,
+      progressBar:true,
+    }),
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass:jwt, multi: true }],
   bootstrap: [AppComponent]
