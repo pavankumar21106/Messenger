@@ -7,7 +7,9 @@ using Messenger.Domain;
 using MessengerService.IService;
 using MessengerService.ModelAutoMapperProfile;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.Extensions.Configuration;
+using MessengerAPI.Models;
+using MessengerService.DTO;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +20,7 @@ builder.Services.AddControllers(options => options.Filters.Add<AuthorizationFilt
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.Configure<SmtpConfig>(opt => builder.Configuration.GetSection("SmtpConfig").Bind(opt));
 builder.Services.AddSingleton<TokenGenarator>();
 builder.Services.AddSingleton<UserTokenGenarator>();
 builder.Services.AddScoped<IMessageService, MessageService>();

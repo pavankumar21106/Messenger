@@ -3,7 +3,7 @@ import { map } from 'rxjs';
 import { slugs } from 'src/app/core/constants/api-slug';
 import * as httpService from 'src/app/core/services/http.service';
 import {
-  ColumnMode,
+  ColumnMode, DatatableComponent,
 } from '@swimlane/ngx-datatable';
 import { ToastrService } from 'ngx-toastr';
 @Component({
@@ -13,15 +13,28 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class InboxComponent implements OnInit {
 
-  @ViewChild('myTable') table: any;
+  @ViewChild(DatatableComponent)
+  table!: DatatableComponent;
   rows: any[] = [];
   expanded: any = {};
   timeout: any;
   public mails: Mails[] = [];
   ColumnMode = ColumnMode;
 
-  constructor(private readonly _httpClient: httpService.HttpService) {}
+  constructor(private readonly _httpClient: httpService.HttpService) { }
 
+  deleteMail(row: Mails) {
+    let temp = this._httpClient.Delete<any>(slugs.Delete + row.id).pipe(map(res => res)).subscribe(r => {
+      console.log('click', row);
+      for (var i = 0; i < this.mails.length; i++) {
+        if (this.mails[i].id === row.id) {
+          this.mails.splice(i, 1);
+          this.mails=[...this.mails]
+        }
+      }
+      this.table.offset = 0;
+    });
+  }
 
 
   ngOnInit(): void {
@@ -38,16 +51,18 @@ export class InboxComponent implements OnInit {
     this.table.rowDetail.toggleExpandRow(row);
   }
 
-  onDetailToggle(event: any) {
-    console.log('Detail Toggled', event);
-  }
+  // onDetailToggle(event: any) {
+  //   console.log('Detail Toggled', event);
+  // }
 
 }
 
 export interface Mails {
-  to: string
-  toName: string
+  from: string
+  fromName: string
   subject: string
   body: string
-  attachment: any[]
+  id: number
+  createdDate: string
 }
+

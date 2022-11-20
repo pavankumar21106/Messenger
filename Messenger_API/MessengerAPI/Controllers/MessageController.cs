@@ -36,9 +36,9 @@ namespace MailServiceAPI.Controllers
             return _mapper.Map<MessageModel>(result.ValueOrDefault);
         }
         [HttpGet("GetMessages")]
-        public async Task<ActionResult<List<MessageModel>>> GetMessagesAsync()
+        public async Task<ActionResult<List<MessageResponseModel>>> GetMessagesAsync()
         {
-            return _mapper.Map<List<MessageModel>>(await _messageService.GetMessagesAsync());
+            return _mapper.Map<List<MessageResponseModel>>(await _messageService.GetMessagesAsync());
         }
 
         [HttpDelete("DeleteMessage")]

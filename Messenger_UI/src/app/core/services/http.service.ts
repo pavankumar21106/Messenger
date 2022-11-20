@@ -15,4 +15,7 @@ export class HttpService {
     get<T>(slug: string, headers?: HttpHeaders | { [header: string]: string | string[] }) {
         return this.httpClient.get<T>(`${environment.BaseUrl}${slug}`, { headers: headers })
     }
+    Delete<T>(slug: string, headers?: HttpHeaders | { [header: string]: string | string[] }) {
+        return this.httpClient.delete<T>(`${environment.BaseUrl}${slug}`, { headers: headers })
+    }
 }

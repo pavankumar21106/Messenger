@@ -1,52 +1,71 @@
-<div class="container c-center">
-  <ngx-datatable #myTable class="material expandable w-4/6 h-5/6" [columnMode]="ColumnMode.force" [headerHeight]="50"
-    [footerHeight]="50" [rowHeight]="50" [scrollbarV]="true" rowHeight="auto" [rows]="mails" [limit]="10">
+<div class="container c-center ">
+  <ngx-datatable #table class="material expandable w-4/6 h-5/6 rounded" [columnMode]="ColumnMode.force" [headerHeight]="50"
+    [footerHeight]="50" [rowHeight]="50" [scrollbarV]="true" rowHeight="auto" [rows]="mails" [limit]="10"
+    >
     <!-- Row Detail Template -->
-    <ngx-datatable-row-detail [rowHeight]="100" #myDetailRow (toggle)="onDetailToggle($event)">
+    <ngx-datatable-row-detail
+    [rowHeight]="200"
+    #myDetailRow>
+      <!-- (toggle)="onDetailToggle($event)" -->
       <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
         <div style="padding-left:35px;">
-          <div><strong>mail</strong></div>
-          <div>{{ row.toName }}
-          </div>
-          <div>
-            {{ row.subject}}
-          </div>
-          <div>
-            {{row.body}}
-          </div>
+          <div class="p-1"><strong>Details</strong></div>
+          <strong>
+            <div class="p-1"> From :{{ row.from }}
+            </div>
+          </strong>
+          <strong>
+            <div class="p-1">
+              From Name: {{ row.fromName}}
+            </div>
+          </strong>
+          <strong>
+            <div class="p-1">
+              Subject: {{row.subject}}
+            </div>
+          </strong>
+          <strong>
+            <div class="p-1">
+              Body: {{row.body |textHide :500}}
+            </div>
+          </strong>
         </div>
       </ng-template>
     </ngx-datatable-row-detail>
     <!-- Column Templates -->
 
-    <ngx-datatable-column name="toName">
+    <ngx-datatable-column name="From" [minWidth]="80" [maxWidth]="80" [resizeable]="false" [sortable]="true"
+      [draggable]="false" [canAutoResize]="false">
       <ng-template let-value="value" ngx-datatable-cell-template>
         <strong>{{ value |textHide }}</strong>
       </ng-template>
     </ngx-datatable-column>
-    <ngx-datatable-column name="subject">
+    <ngx-datatable-column name="subject" [minWidth]="250" [maxWidth]="250" [resizeable]="false" [sortable]="true"
+      [draggable]="false" [canAutoResize]="false">
       <ng-template let-value="value" ngx-datatable-cell-template>
-        <strong>{{ value|textHide }}</strong>
+        <strong>{{ value|textHide:100 }}</strong>
       </ng-template>
     </ngx-datatable-column>
-    <ngx-datatable-column name="body">
+    <ngx-datatable-column name="body" [minWidth]="500" [maxWidth]="500" [resizeable]="false" [sortable]="true"
+      [draggable]="false" [canAutoResize]="false">
       <ng-template let-value="value" ngx-datatable-cell-template>
-        <strong>{{ value |textHide}}</strong>
+        <strong>{{ value |textHide:200}}</strong>
       </ng-template>
     </ngx-datatable-column>
-    <ngx-datatable-column name="action" [width]="50" [resizeable]="false" [sortable]="false" [draggable]="false"
-      [canAutoResize]="false">
+    <ngx-datatable-column name="action" [minWidth]="80" [maxWidth]="80" [resizeable]="false" [sortable]="false"
+      [draggable]="false" [canAutoResize]="false">
       <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
-        <!-- <a -->
-        <!-- href="javascript:void(0)" -->
-        <!-- [class.datatable-icon-right]="!expanded" -->
-        <!-- [class.datatable-icon-down]="expanded" -->
-        <!-- title="Expand/Collapse Row" -->
-        <!-- (click)="toggleExpandRow(row)" -->
-        <!-- > -->
-        <!-- </a> -->
-
-        <div (click)="toggleExpandRow(row)"> click</div>
+        <button class="blue-color" (click)="toggleExpandRow(row)">
+          <u>view</u>
+        </button>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="action" [minWidth]="80" [maxWidth]="80" [resizeable]="false" [sortable]="false"
+      [draggable]="false" [canAutoResize]="false">
+      <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+        <button class="blue-color" (click)="deleteMail(row)">
+          <u>Delete</u>
+        </button>
       </ng-template>
     </ngx-datatable-column>
   </ngx-datatable>

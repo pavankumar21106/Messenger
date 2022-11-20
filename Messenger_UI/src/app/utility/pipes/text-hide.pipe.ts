@@ -5,11 +5,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class TextHidePipe implements PipeTransform {
 
-  transform(value: any, ...args: unknown[]): any | string | null {
+  transform(value: any, length: number=20): any | string | null {
     if (!value)
       return null;
 
-    if (value.length > 20) {
+    if (value.length > length) {
       return value.substring(0, 15) + "...";
     }
     return value;

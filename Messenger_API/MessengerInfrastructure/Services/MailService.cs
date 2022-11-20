@@ -6,20 +6,27 @@ using MessengerInfrastructure.IService;
 using FluentResults;
 using Messenger.DBContext;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using Microsoft.Extensions.DependencyInjection;
+using MessengerService.DTO;
 
 namespace MessengerInfrastructure.Services
 {
     public class MailService : IMailService
     {
         private readonly MessageDbContext _messageContext;
-        public MailService(MessageDbContext messageDbContext)
+        private readonly SmtpConfig _smtpConfig;
+        public MailService(MessageDbContext messageDbContext, IServiceProvider services)
         {
             _messageContext = messageDbContext;
+            _smtpConfig = services.GetService<IOptions<SmtpConfig>>().Value;
         }
         public async Task<Result<MessageEntity>> SendMailAsync(MessageEntity message)
         {
 
             var emailMessage = new MimeMessage();
+            message.From= _smtpConfig.From;
+            message.FromName= _smtpConfig.FromName;
             emailMessage.From.Add(new MailboxAddress(message.FromName, message.From));
             emailMessage.To.Add(new MailboxAddress(message.ToName, message.To));
             emailMessage.Subject = message.Subject;
@@ -40,8 +47,8 @@ namespace MessengerInfrastructure.Services
 
             using var client = new SmtpClient();
             client.ServerCertificateValidationCallback = (s, c, h, e) => true;
-            client.Connect("smtp.gmail.com", 465, SecureSocketOptions.SslOnConnect);
-            client.Authenticate("pavankumar21106@gmail.com", "wueddtqvzgjgukce");
+            client.Connect(_smtpConfig.ServerName, _smtpConfig.PortNumber, SecureSocketOptions.SslOnConnect);
+            client.Authenticate(_smtpConfig.UserName,_smtpConfig.Password);
             await client.SendAsync(emailMessage);
             client.Disconnect(true);
 
@@ -54,7 +61,7 @@ namespace MessengerInfrastructure.Services
 
         public async Task<List<MessageEntity>> GetMessagesAsync()
         {
-            return (await _messageContext.Set<MessageEntity>().ToListAsync());
+            return (await _messageContext.Set<MessageEntity>().OrderByDescending(e=>e.Id).ToListAsync());
         }
 
         public async Task<bool> DeleteMessagesAsync(int id)
@@ -62,7 +69,7 @@ namespace MessengerInfrastructure.Services
             var result = await _messageContext.Set<MessageEntity>().Where(e => e.Id == id).FirstOrDefaultAsync();
             result.IsDeleted = true;
             _messageContext.Update(result);
-            _messageContext.SaveChangesAsync();
+            await _messageContext.SaveChangesAsync();
             var res = result;
             return true;
         }
