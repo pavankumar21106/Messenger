@@ -20,12 +20,10 @@ export class InboxComponent implements OnInit {
   public mails: Mails[] = [];
   ColumnMode = ColumnMode;
 
-  constructor(private readonly _httpClient: httpService.HttpService,private toastr: ToastrService) {}
+  constructor(private readonly _httpClient: httpService.HttpService) {}
 
 
-  openSnackBar() {
-    this.toastr.success('Hello world!');
-  }
+
   ngOnInit(): void {
     let temp = this._httpClient.get<any>(slugs.GetMessages).pipe(map(res => res)).subscribe(r => {
       console.log(r);
@@ -36,7 +34,6 @@ export class InboxComponent implements OnInit {
   }
 
   toggleExpandRow(row: any) {
-    this.openSnackBar();
     console.log('Toggled Expand Row!', row);
     this.table.rowDetail.toggleExpandRow(row);
   }

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { map } from 'rxjs';
 import { slugs } from 'src/app/core/constants/api-slug';
 import * as httpService from 'src/app/core/services/http.service';
+import { ToasterService } from 'src/app/utility/services/toster/toster.service';
 
 @Component({
   selector: 'app-compose',
@@ -13,7 +14,7 @@ import * as httpService from 'src/app/core/services/http.service';
 export class ComposeComponent implements OnInit {
 
   constructor(private readonly _httpClient: httpService.HttpService,
-    private _router: Router) { }
+    private _router: Router,private _toster:ToasterService) { }
     toEmail = '';
   ngOnInit() {
   }
@@ -26,6 +27,7 @@ export class ComposeComponent implements OnInit {
     console.log(this.composeForm.value);
     this._httpClient.post<any>(slugs.Compose, this.composeForm.value).pipe(map(res => res)).subscribe(r => {
       console.log(r);
+      this._toster.successToaster('Mail Sent');
       this._router.navigate(['inbox']);
     });
   }
