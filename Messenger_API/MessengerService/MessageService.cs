@@ -22,9 +22,9 @@ namespace MessengerService
             return _mapper.Map<Result<MessageDTO>>(await _mailService.SendMailAsync(messageObj));
         }
 
-        public async Task<List<MessageDTO>> GetMessagesAsync()
+        public async Task<List<MessageDTO>> GetMessagesAsync(string searchText="")
         {
-            return _mapper.Map<List<MessageDTO>>(await _mailService.GetMessagesAsync());
+            return _mapper.Map<List<MessageDTO>>(await _mailService.GetMessagesAsync(searchText));
         }
         
         public async Task<bool> DeleteMessageAsync(int id)

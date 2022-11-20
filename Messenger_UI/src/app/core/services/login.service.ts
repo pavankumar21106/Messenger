@@ -24,6 +24,7 @@ export class LoginService {
           this.isLoggedIn.isLoggedIn = true;
           resolve(this.isLoggedIn)
         }
+        resolve(false);
       }
       )
     })

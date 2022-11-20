@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginClass, LoginService } from 'src/app/core/services/login.service';
+import { MailServiceService } from 'src/app/core/services/mail-service.service';
 
 @Component({
   selector: 'app-header',
@@ -10,8 +11,10 @@ import { LoginClass, LoginService } from 'src/app/core/services/login.service';
 export class HeaderComponent implements OnInit {
 
   constructor(private readonly _loginService: LoginService,
+    private readonly _mailServiceService: MailServiceService,
     private _router: Router) { }
   public isLoggedIn!: LoginClass;
+  public searchText:string="";
   ngOnInit(): void {
     this.isLoggedIn = this._loginService.isLoggedIn;
   }
@@ -22,6 +25,10 @@ export class HeaderComponent implements OnInit {
 
   navigateToInbox() {
     this._router.navigate(['inbox']);
+  }
+
+  async searchMails(searchText:string){
+    await this._mailServiceService.SearchMails(searchText);
   }
 
   logOut() {

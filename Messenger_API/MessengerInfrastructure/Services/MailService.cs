@@ -25,8 +25,8 @@ namespace MessengerInfrastructure.Services
         {
 
             var emailMessage = new MimeMessage();
-            message.From= _smtpConfig.From;
-            message.FromName= _smtpConfig.FromName;
+            message.From = _smtpConfig.From;
+            message.FromName = _smtpConfig.FromName;
             emailMessage.From.Add(new MailboxAddress(message.FromName, message.From));
             emailMessage.To.Add(new MailboxAddress(message.ToName, message.To));
             emailMessage.Subject = message.Subject;
@@ -48,7 +48,7 @@ namespace MessengerInfrastructure.Services
             using var client = new SmtpClient();
             client.ServerCertificateValidationCallback = (s, c, h, e) => true;
             client.Connect(_smtpConfig.ServerName, _smtpConfig.PortNumber, SecureSocketOptions.SslOnConnect);
-            client.Authenticate(_smtpConfig.UserName,_smtpConfig.Password);
+            client.Authenticate(_smtpConfig.UserName, _smtpConfig.Password);
             await client.SendAsync(emailMessage);
             client.Disconnect(true);
 
@@ -59,9 +59,13 @@ namespace MessengerInfrastructure.Services
             return message.ToResult();
         }
 
-        public async Task<List<MessageEntity>> GetMessagesAsync()
+        public async Task<List<MessageEntity>> GetMessagesAsync(string searchText)
         {
-            return (await _messageContext.Set<MessageEntity>().OrderByDescending(e=>e.Id).ToListAsync());
+            if (!string.IsNullOrWhiteSpace(searchText))
+            {
+                return await _messageContext.Set<MessageEntity>().Where(e => e.From.Contains(searchText) || e.Subject.Contains(searchText) || e.Body.Contains(searchText)).OrderByDescending(e => e.Id).ToListAsync();
+            }
+            return (await _messageContext.Set<MessageEntity>().OrderByDescending(e => e.Id).ToListAsync());
         }
 
         public async Task<bool> DeleteMessagesAsync(int id)

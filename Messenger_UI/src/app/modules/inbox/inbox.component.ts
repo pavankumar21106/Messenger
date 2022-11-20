@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { map } from 'rxjs';
 import { slugs } from 'src/app/core/constants/api-slug';
-import * as httpService from 'src/app/core/services/http.service';
 import {
   ColumnMode, DatatableComponent,
 } from '@swimlane/ngx-datatable';
-import { ToastrService } from 'ngx-toastr';
+import { HttpService } from 'src/app/core/services/http.service';
+import { MailServiceService } from 'src/app/core/services/mail-service.service';
 @Component({
   selector: 'app-inbox',
   templateUrl: './inbox.component.html',
@@ -21,7 +21,7 @@ export class InboxComponent implements OnInit {
   public mails: Mails[] = [];
   ColumnMode = ColumnMode;
 
-  constructor(private readonly _httpClient: httpService.HttpService) { }
+  constructor(private readonly _httpClient: HttpService, private readonly _mailServiceService: MailServiceService) { }
 
   deleteMail(row: Mails) {
     let temp = this._httpClient.Delete<any>(slugs.Delete + row.id).pipe(map(res => res)).subscribe(r => {
@@ -29,7 +29,7 @@ export class InboxComponent implements OnInit {
       for (var i = 0; i < this.mails.length; i++) {
         if (this.mails[i].id === row.id) {
           this.mails.splice(i, 1);
-          this.mails=[...this.mails]
+          this.mails = [...this.mails]
         }
       }
       this.table.offset = 0;
@@ -37,13 +37,13 @@ export class InboxComponent implements OnInit {
   }
 
 
-  ngOnInit(): void {
-    let temp = this._httpClient.get<any>(slugs.GetMessages).pipe(map(res => res)).subscribe(r => {
-      console.log(r);
-      this.mails = r;
-      console.log(this.mails);
-      return r;
-    });
+  async ngOnInit(): Promise<void> {
+    let res = await this._mailServiceService.getMails();
+    if (res) {
+      this._mailServiceService.mails.subscribe(res=>{
+        this.mails = [...res];
+      })
+    }
   }
 
   toggleExpandRow(row: any) {

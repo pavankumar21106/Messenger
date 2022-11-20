@@ -6,7 +6,7 @@ namespace MessengerInfrastructure.IService
     public interface IMailService
     {
         Task<bool> DeleteMessagesAsync(int id);
-        Task<List<MessageEntity>> GetMessagesAsync();
+        Task<List<MessageEntity>> GetMessagesAsync(string searchText);
         Task<Result<MessageEntity>> SendMailAsync(MessageEntity message);
     }
 }

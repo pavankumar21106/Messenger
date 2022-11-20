@@ -1,9 +1,11 @@
 using AutoMapper;
 using FluentResults;
+using MailKit.Search;
 using MessengerAPI.Models;
 using MessengerService.DTO;
 using MessengerService.IService;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 
 namespace MailServiceAPI.Controllers
 {
@@ -35,10 +37,17 @@ namespace MailServiceAPI.Controllers
 
             return _mapper.Map<MessageModel>(result.ValueOrDefault);
         }
+
         [HttpGet("GetMessages")]
         public async Task<ActionResult<List<MessageResponseModel>>> GetMessagesAsync()
         {
             return _mapper.Map<List<MessageResponseModel>>(await _messageService.GetMessagesAsync());
+        }
+
+        [HttpGet("SearchMessages")]
+        public async Task<ActionResult<List<MessageResponseModel>>> SearchMessages(string? searchText)
+        {
+            return _mapper.Map<List<MessageResponseModel>>(await _messageService.GetMessagesAsync(searchText));
         }
 
         [HttpDelete("DeleteMessage")]
