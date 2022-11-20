@@ -2,11 +2,9 @@
   <ngx-datatable #table class="material expandable w-4/6 h-5/6 rounded" [columnMode]="ColumnMode.force" [headerHeight]="50"
     [footerHeight]="50" [rowHeight]="50" [scrollbarV]="true" rowHeight="auto" [rows]="mails" [limit]="10"
     >
-    <!-- Row Detail Template -->
     <ngx-datatable-row-detail
     [rowHeight]="200"
     #myDetailRow>
-      <!-- (toggle)="onDetailToggle($event)" -->
       <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
         <div style="padding-left:35px;">
           <div class="p-1"><strong>Details</strong></div>
@@ -32,7 +30,6 @@
         </div>
       </ng-template>
     </ngx-datatable-row-detail>
-    <!-- Column Templates -->
 
     <ngx-datatable-column name="From" [minWidth]="80" [maxWidth]="80" [resizeable]="false" [sortable]="true"
       [draggable]="false" [canAutoResize]="false">

@@ -51,10 +51,6 @@ export class InboxComponent implements OnInit {
     this.table.rowDetail.toggleExpandRow(row);
   }
 
-  // onDetailToggle(event: any) {
-  //   console.log('Detail Toggled', event);
-  // }
-
 }
 
 export interface Mails {

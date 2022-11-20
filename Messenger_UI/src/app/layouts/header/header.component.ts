@@ -28,7 +28,11 @@ export class HeaderComponent implements OnInit {
   }
 
   async searchMails(searchText:string){
-    await this._mailServiceService.SearchMails(searchText);
+    let res = await this._mailServiceService.SearchMails(searchText);
+    if (res) {
+      this._router.navigate(['inbox']);
+    }
+    this.searchText="";
   }
 
   logOut() {

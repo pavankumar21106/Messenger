@@ -26,6 +26,7 @@ import { TextHidePipe } from './utility/pipes/text-hide.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
+//TODO:move this
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   "bgsColor": "#00dce9",
   "bgsOpacity": 0.5,

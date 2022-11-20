@@ -33,6 +33,7 @@ export class MailServiceService {
           this._mailsSub.next(res);
           resolve(true);
         }
+        resolve(false);
       }
       )
     })

@@ -18,11 +18,11 @@ export class LoginComponent implements OnInit {
 
   loginForm = new FormGroup({
     email: new FormControl(''),
-    userName: new FormControl('',[
+    userName: new FormControl('pavankumar21106@gmail.com',[
       Validators.required,
       Validators.email
     ]),
-    password: new FormControl('')
+    password: new FormControl('Test@123')
   });
 
   async onSubmit() {

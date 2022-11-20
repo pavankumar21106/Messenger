@@ -6,13 +6,14 @@ import { MainComponent } from './layouts/main/main.component';
 import { ComposeComponent } from './modules/compose/compose.component';
 import { InboxComponent } from './modules/inbox/inbox.component';
 import { LoginComponent } from './modules/login/login.component';
+import { PreventRedirectGuard } from './utility/guards/prevent-redirect.guard';
 import { NotFoundComponent } from './utility/not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent, canActivate: [HomeScreenService] },
   { path: 'login', component: LoginComponent, canActivate: [HomeScreenService] },
   { path: 'inbox', component: InboxComponent, canActivate: [AuthGuardService] },
-  { path: 'compose', component: ComposeComponent, canActivate: [AuthGuardService] },
+  { path: 'compose', component: ComposeComponent, canActivate: [AuthGuardService],canDeactivate: [PreventRedirectGuard] },
   { path: '**', component: NotFoundComponent },
 ];
 
