@@ -18,7 +18,7 @@ export class PreventRedirectGuard implements CanDeactivate<any> {
       (component.canDeactivate && !component.canDeactivate())
     ) {
       if (
-        window.confirm("Sure man?")
+        window.confirm("Discard changes?")
       ) {
         return true;
       } else {

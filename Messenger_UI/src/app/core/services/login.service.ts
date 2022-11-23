@@ -11,7 +11,7 @@ export class LoginService {
   isLoggedIn:LoginClass;
   constructor(private readonly _httpClient: HttpService, private _router: Router) {
     this.isLoggedIn = new LoginClass(false);
-    let token = sessionStorage.getItem('token') ?? "";
+    let token = localStorage.getItem('token') ?? "";
     this.isLoggedIn.isLoggedIn = token.length>0 ?  true : false;
    }
 
@@ -20,7 +20,7 @@ export class LoginService {
     return new Promise((resolve) => {
       this._httpClient.post<any>(slugs.Login, userData, headers).subscribe(res => {
         if (res.token) {
-          sessionStorage.setItem('token', res.token);
+          localStorage.setItem('token', res.token);
           this.isLoggedIn.isLoggedIn = true;
           resolve(this.isLoggedIn)
         }
@@ -31,7 +31,7 @@ export class LoginService {
   }
 
   logOut() {
-    sessionStorage.removeItem('token');
+    localStorage.removeItem('token');
     this._router.navigate(['login']);
     this.isLoggedIn.isLoggedIn = false;
   }

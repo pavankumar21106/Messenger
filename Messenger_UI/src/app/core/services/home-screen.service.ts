@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class HomeScreenService implements CanActivate {
   constructor(private _router: Router) { }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    const token = sessionStorage.getItem('token');
+    const token = localStorage.getItem('token');
       if (token) {
         this._router.navigate(['inbox']);
       }

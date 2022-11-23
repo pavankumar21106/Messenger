@@ -18,7 +18,7 @@ export class jwt implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     this.ngxService.start();
 
-    const token = sessionStorage.getItem('token');
+    const token = localStorage.getItem('token');
 
     if (request.url.includes('sign-in') || !token) {
       this.ngxService.stop();
