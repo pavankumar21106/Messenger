@@ -1,0 +1,2 @@
+open cmd as administrator
+echo <Ip Address> <Domain Name> >> %WINDIR%\System32\Drivers\Etc\Hosts
