@@ -7,5 +7,7 @@ docker run --name dpostgre -e POSTGRES_USER=dtest -e POSTGRES_PASSWORD=dtest -p 
 
 docker start dpostgre
 
+docker ps -a 
 
+docker start <image name>
 ####################################################
