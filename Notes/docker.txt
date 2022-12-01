@@ -1,0 +1,11 @@
+
+####################################################
+
+for running postgres sql 
+
+docker run --name dpostgre -e POSTGRES_USER=dtest -e POSTGRES_PASSWORD=dtest -p 4200:5432 -v D:\PostgreSQL_Docker -d postgres
+
+docker start dpostgre
+
+
+####################################################
