@@ -1,7 +1,7 @@
-npm install @capacitor/cli @capacitor/core
+npm install @capacitor/cli @capacitor/core -f
 npx cap init
 
-npm install @capacitor/android
+npm install @capacitor/android -f
 npx cap add android
 
 npx cap sync
