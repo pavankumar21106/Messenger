@@ -7,11 +7,11 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["Messenger.API.csproj", "."]
-COPY ["../MessengerService/Messenger.Application.csproj", "../MessengerService/"]
-COPY ["../Messenger.Domain/Messenger.Domain.csproj", "../Messenger.Domain/"]
-COPY ["../Messenger.Entities/Messenger.Entities.csproj", "../Messenger.Entities/"]
-COPY ["../MessengerInfrastructure/Messenger.Infrastructure.csproj", "../MessengerInfrastructure/"]
-COPY ["../Messenger.DBContext/Messenger.DBContext.csproj", "../Messenger.DBContext/"]
+COPY ["MessengerService/Messenger.Application.csproj", "MessengerService/"]
+COPY ["Messenger.Domain/Messenger.Domain.csproj", "Messenger.Domain/"]
+COPY ["Messenger.Entities/Messenger.Entities.csproj", "Messenger.Entities/"]
+COPY ["MessengerInfrastructure/Messenger.Infrastructure.csproj", "MessengerInfrastructure/"]
+COPY ["Messenger.DBContext/Messenger.DBContext.csproj", "Messenger.DBContext/"]
 RUN dotnet restore "./Messenger.API.csproj"
 COPY . .
 WORKDIR "/src/."

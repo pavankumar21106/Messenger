@@ -9,6 +9,29 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Messenger.DBContext\**" />
+    <Compile Remove="Messenger.Domain\**" />
+    <Compile Remove="Messenger.Entities\**" />
+    <Compile Remove="MessengerInfrastructure\**" />
+    <Compile Remove="MessengerService\**" />
+    <Content Remove="Messenger.DBContext\**" />
+    <Content Remove="Messenger.Domain\**" />
+    <Content Remove="Messenger.Entities\**" />
+    <Content Remove="MessengerInfrastructure\**" />
+    <Content Remove="MessengerService\**" />
+    <EmbeddedResource Remove="Messenger.DBContext\**" />
+    <EmbeddedResource Remove="Messenger.Domain\**" />
+    <EmbeddedResource Remove="Messenger.Entities\**" />
+    <EmbeddedResource Remove="MessengerInfrastructure\**" />
+    <EmbeddedResource Remove="MessengerService\**" />
+    <None Remove="Messenger.DBContext\**" />
+    <None Remove="Messenger.Domain\**" />
+    <None Remove="Messenger.Entities\**" />
+    <None Remove="MessengerInfrastructure\**" />
+    <None Remove="MessengerService\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.9">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -19,7 +42,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MessengerService\Messenger.Application.csproj" />
+    <ProjectReference Include="MessengerService\Messenger.Application.csproj" />
   </ItemGroup>
 
 </Project>

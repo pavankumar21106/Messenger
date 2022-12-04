@@ -168,7 +168,18 @@ docker run --name pdb_messenger -e POSTGRES_USER=qwerty -e POSTGRES_PASSWORD=qwe
 
 #######################################################################
 
+for running dot net api :
 
+for building image:
+
+docker build -t <image name>:<tag name> .
+docker run --name <name of container> -p 4002:80 <name of image>
+
+#######################################################################
+for running angular app :
+
+docker build -t <image name>:<tag name> .
+docker run --name <name of container> -p 4200:80 <name of image>
 
 #######################################################################
 
