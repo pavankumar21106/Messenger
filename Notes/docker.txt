@@ -9,3 +9,219 @@ docker start dpostgre
 
 
 ####################################################
+
+docker version 
+
+docker ps -a
+
+docker pull node:19.2-alpine -- for lite weight node
+
+
+docker run ubuntu
+
+docker image ls
+
+
+docker run -it <image id> sh   -- for running shell 
+
+ENV <variable name > = <value> -- declaring environment variables
+
+printenv -- linux command for printing environment variables 
+
+RUN addgroup <group name>  && adduser -S -G <group name> <user name>  -- linux command for creating group and creating user in a group 
+
+
+groups <group name> -- to check user is created or not 
+
+USER <user name> -- to switch user 7
+
+
+RUN <command> -- for running commands  while building images 
+
+--shell form, it spin ups shell and  uses shell 
+CMD <command> -- running commands in run time, only last CMD is considered 
+
+--exec from , there is no need of shell it will directly executes so this is faster
+CMD ["npm","start"] 
+
+
+ENTRYPOINT is same as CMD but to over ride we have to explicitly mention 
+
+
+docker history <image name> -- for seeing layers created by and  its sizes 
+
+
+docker container prune -- removes stopped containers
+docker image prune -- removes unused images
+
+docker build -t <image name>:<tag name>
+
+docker image tag <current image name>:<current tag name> <new image name>:<new tag name>  --to change tag name 
+
+
+docker image save -o <tar file path> <image name> -- for saving a docker image to a tar file 
+
+
+docker image load -i < tar file path>
+
+
+docker run -d -p <host port>:<container port> --name <name for container> <image name > -- for creating containers in detach mode
+
+
+docker logs <container id> -- for viewing the logs 
+
+    options:
+        -n <last no of lines to show>
+        -t to show time stamps
+
+
+docker exec <container id > <commands> --for running commands running containers 
+
+docker rm --for removing stopped containers
+
+
+docker volume create <volume name > --for creating volumes 
+
+docker volume inspect <volume name> -- form inspecting volumes
+
+docker run -d -p <host port>:<container port> -v <volume name>:<path of data mount to volume> --name <name for container> <image name >
+
+docker cp <container id>:<path of file to copy>  <host path>  --to copy files from container to host
+
+docker cp <host file path>   <container id>:<path of file to copy> -- to copy files from host to container
+
+docker run -d -v $(pwd):/<path in container> -- this for real time sharing source code between host and container 
+
+docker-compose -version
+
+
+docker container rm $(docker container ls -aq) -- for removing all containers
+
+
+docker image rm $(docker image ls -aq) -- for removing all containers
+
+docker volume prune 
+
+docker system prune --This will remove:
+                        - all stopped containers
+                        - all networks not used by at least one container
+                        - all dangling images
+                        - all dangling build cache
+
+docker system prune -a -- This will remove:
+                            - all stopped containers
+                            - all networks not used by at least one container
+                            - all images without at least one container associated to them
+                            - all build cache
+
+docker-compose logs
+
+
+docker network ls  -- to see all network
+
+
+docker exec -it <container id> sh -- for terminal in container
+
+docker exec -it <container id> -u <user name> sh -- for setting user in  container terminal
+
+
+#######################################################################
+docker compose file 
+
+services:
+    frontend:
+        build: <docker file path >
+        ports:
+            -<host port>:<container port>
+        volume:
+            -<map>
+    api:
+        build: <docker file path >
+        ports:
+            -<host port>:<container port>
+        environment:
+            -<variables>
+        volume:
+            -<map>
+        commands:
+            <commands>
+    db:
+        image:<image name>
+        ports:
+            -<host port>:<container port>
+        volumes:
+            -<mounting>
+volumes:
+    <volume name>
+
+
+
+
+
+#######################################################################
+
+for creating postgres sql data base:
+
+
+docker volume create v_messenger_pdb
+docker run --name pdb_messenger -e POSTGRES_USER=qwerty -e POSTGRES_PASSWORD=qwerty -p 5430:5432 -v /v_messenger_pdb:/var/lib/postgresql/data -d postgres:15.1-alpine3.17
+
+#######################################################################
+
+
+
+#######################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#########################################################
+
+
+docker commands archive
+
+# command for building docker container
+#docker build -t pavankumar21106/angular-app .
+#  docker ps -a
+#  docker image -ls
+#  docker image ls
+#  docker
+#  docker run --name angular-app 72cb671ed673 -v --help
+#  docker run --name angular-app 72cb671ed673  --help
+#  docker run  --help
+#  docker run 72cb671ed673 --name angualr-app -p 4201:80
+#  docker run --name angualr-app -p 4201:80 72cb671ed673
+#  docker run -it --name angualr-app1 -p 8000:80 72cb671ed673
+# : docker create -it --name angualr-app1 -p 8000:80 72cb671ed673
+# : docker create -it --name angualr-app2 -p 8000:80 72cb671ed673
+# : docker start angualr-app2
+# : docker exec -it angualr-app2 /bin/bash
+# : docker exec -it angualr-app2 sh
+# : docker create -it --name nginx nginx:latest -v D:\PostgreSQL_Docker:/var/www/html
