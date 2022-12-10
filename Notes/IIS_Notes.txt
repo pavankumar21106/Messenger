@@ -1,0 +1,69 @@
+why we need a hosting server like IIS 
+
+vs run npm start
+
+frame  work depended
+
+self contained
+
+sdk vs runtime
+
+show publish options
+
+virtual directory
+
+add application
+
+show how to start and stop iis server 
+create application pool 
+same application pool for different sites
+
+
+application pools
+show application pools in worker processors and in task manager -- name iis worker processors
+
+
+application pool advanced settings 
+pipeline mode 
+queue length(if ful it will give 503 service unavailable)
+start mode
+
+cpu settings
+
+
+application pool defaults settings
+
+
+self signed certificates
+create certificate request
+
+
+URL rewrite 
+
+seo section to lower 
+canonical host name
+
+url rewrite  - swagger
+
+url redirect 
+
+url filters
+
+ip and domain restrictions
+ 
+dynamic restrictions settings
+add allow entry
+deny allow entry
+
+mime types
+
+error pages
+
+default document
+
+how to enable ftp server 
+create ftp server 
+demo it in the filezilla 
+ftp current sessions
+
+echo [ip address] [domain name] >> %WINDIR%\System32\Drivers\Etc\Hosts -- for editing host file 

@@ -54,6 +54,8 @@ docker history <image name> -- for seeing layers created by and  its sizes
 docker container prune -- removes stopped containers
 docker image prune -- removes unused images
 
+docker rmi -f <image id> <image id> <image id> -- to remove multiple images 
+
 docker build -t <image name>:<tag name>
 
 docker image tag <current image name>:<current tag name> <new image name>:<new tag name>  --to change tag name 
@@ -164,7 +166,13 @@ for creating postgres sql data base:
 
 
 docker volume create v_messenger_pdb
+
 docker run --name pdb_messenger -e POSTGRES_USER=qwerty -e POSTGRES_PASSWORD=qwerty -p 5430:5432 -v /v_messenger_pdb:/var/lib/postgresql/data -d postgres:15.1-alpine3.17
+
+docker run --name pdb_messenger -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=qwerty -p 5430:5432 --mount type=bind,source=D:\PostgreSQL_Docker,target=/var/lib/postgresql/data -d postgres:15.1-alpine3.17
+
+docker exec -it <image name> psql <data base> <user>
+
 
 #######################################################################
 
@@ -173,6 +181,7 @@ for running dot net api :
 for building image:
 
 docker build -t <image name>:<tag name> .
+docker build -t <image name>:<tag name> -f .<file name> -- to provide file name other than dockerfile
 docker run --name <name of container> -p 4002:80 <name of image>
 
 #######################################################################

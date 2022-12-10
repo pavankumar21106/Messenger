@@ -1,0 +1,30 @@
+services:
+  messenger-ui:
+    build: ./Messenger_UI/.
+    image: messenger-ui
+    container_name: messenger-ui
+    ports:
+      - "4201:80"
+    networks:
+      - network
+  messenger-api:
+    build: ./messenger_API/MessengerAPI/.
+    image: messenger-api
+    container_name: messenger-api
+    ports:
+      - "5001:80"
+    networks:
+      - network
+  messenger-database:
+    image: postgres:15.1-alpine3.17
+    container_name: messenger-database
+    volumes:
+      - type: bind
+        source: D:\PostgreSQL_Docker
+        target: /var/lib/postgresql/data
+    networks:
+      - network
+    ports:
+      - "4530:5432"
+networks:
+  network: {}
