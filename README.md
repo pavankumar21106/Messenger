@@ -1,7 +1,7 @@
 # Messenger 
 
 
-![logo](Messenger_UI/src/assets/gmail.png "Messenger")
+![logo](Messenger_UI/src/assets/mail.png "Messenger")
 
 
 ## This has been designed  for sending google emails

@@ -15,7 +15,8 @@ export class ComposeComponent  implements OnInit,PreventRedirect {
 
   constructor(private readonly _httpClient: httpService.HttpService,
     private _router: Router,private _toster:ToasterService) { }
-    toEmail = 'pavankumar21106@gmail.com';
+    toEmail = '';
+    // toEmail = 'pavankumar21106@gmail.com';
     public isFormValid:boolean=true;
 
   ngOnInit() {
