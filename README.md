@@ -1,8 +1,6 @@
 # Messenger 
 
-
-![logo](Messenger_UI/src/assets/mail.png "Messenger")
-
+<img src="Messenger_UI/src/assets/mail.png" alt="Messenger" width="90" height="100">
 
 ## This has been designed  for sending google emails
 
