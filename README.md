@@ -2,7 +2,7 @@
 
 <img src="Messenger_UI/src/assets/mail.png" alt="Messenger" width="90" height="100">
 
-## This has been designed  for sending google emails
+## This application has been designed  for sending google emails
 
 <br />
 
@@ -11,10 +11,10 @@
 This application is developed on angular 13, dot net 6 and postgresql 15 tech stack.
 
 
-UI Application Url [Link]()
+UI Application Url [Link](http://10.10.12.184:8098/login)
 
 
-APIs Application Url [Link]()
+APIs Application Url [Link](http://10.10.12.184:8088/swagger/index.html)
 
 <br/>
 
