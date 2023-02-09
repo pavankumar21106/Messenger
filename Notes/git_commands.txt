@@ -4,3 +4,9 @@ for deleting committed git ignore files
 
 git rm -r --cached <FileName>
 ####################################################
+
+for merging two branches as changes with out committing 
+
+git merge <Branch name> --no-commit --no-ff
+git merge <Branch name> --squash --no-commit 
+####################################################
