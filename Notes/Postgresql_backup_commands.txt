@@ -23,3 +23,9 @@ pg_dump -U secondary_user -O -x -h <HOST Address> -C -d <Database Name> -f FileN
 psql -U postgres -f FileName.sql
 
 ####################################################
+postgres sql remove all connections to a Database
+
+SELECT pg_terminate_backend(pid)FROM pg_stat_activity WHERE datname = '<datname>' 
+
+To close the connections
+####################################################
