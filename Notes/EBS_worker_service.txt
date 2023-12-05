@@ -1,0 +1,34 @@
+Precedence imprpheous worker service:
+
+- Create elastic beanstalk worker service.
+- This will use SQS service under the hood so you can create a new queue or map existing queue while creating.
+- use minium of 30 GB disk space for boot drive.
+- enable log stream for ebs service.
+
+- EBS configs:
+    - Add HTTP path  : /XMLFileProcessor
+    - Visibility timeout : 300 seconds
+    - Inactivity timeout : 299 seconds
+    - MIME type : application/json
+    - Max retries : 3
+    - Retention period : 14 days
+    - Connection timeout : 60
+    - HTTP connections  : 1
+
+- SQS configs:
+    - Maximum message size : 256 KB
+    - Visibility timeout : 300 seconds
+    - Inactivity timeout : 299 seconds
+
+- Add SQS trigger for S3 to send messages.
+- Add SQS access policy for getting messages form s3.
+
+- Add the below configs to nginx.conf files under http
+
+    proxy_read_timeout 420;
+    proxy_connect_timeout 420;
+    proxy_send_timeout 420;
+    send_timeout 420;
+
+- Add Indexes in MongoDB, command for adding is
+    db.PatientHealthInfo.createIndex({"CallRegisterCode":1,"PatientEMPI":1},{unique:true});

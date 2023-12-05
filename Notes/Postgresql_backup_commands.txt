@@ -18,9 +18,9 @@ psql -U postgres -f dumpfilename.sql
  for remote server:
 With  including create data base and ignoring roles and privileges:
 
-pg_dump -U secondary_user -O -x -h <HOST Address> -C -d <Database Name> -f FileName.sql
+pg_dump -U <user name> -O -x -h <HOST Address> -C -d <Database Name> -f FileName.sql
 
-psql -U postgres -f FileName.sql
+psql -U <user name> -h <HOST Address> -d <Database Name> -f FileName.sql
 
 ####################################################
 postgres sql remove all connections to a Database

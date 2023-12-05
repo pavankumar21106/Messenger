@@ -1,0 +1,30 @@
+##########################################################
+Command to install report generator tool:
+
+ dotnet tool install -g dotnet-reportgenerator-globaltool
+##########################################################
+
+Command to generate code coverage reports:
+
+rm -r .\Test.WharmManager.API\TestResults
+dotnet test --collect "XPlat code coverage"
+dotnet test --collect "XPlat code coverage" --results-directory .\Test.WharmManager.API\TestResults
+
+##########################################################
+
+Command to generate reports:
+
+ reportgenerator -reports:"D:\Projects\Wharm repo\wharm\WharmAPI\WharmManager\Test.WharmManager.API\TestResults\beeabb0e-9a8c-4e72-8302-45ba7a990638\coverage.cobertura.xml" -targetdir:"D:\Projects\Wharm repo\wharm\WharmAPI\WharmManager\Test.WharmManager.API\TestResults" -reporttypes:Html
+ reportgenerator -reports:"D:\Projects\Wharm repo\wharm\WharmAPI\WharmManager\Test.WharmManager.API\TestResults\**\*.xml" -targetdir:"D:\Projects\Wharm repo\wharm\WharmAPI\WharmManager\Test.WharmManager.API\TestResults\CoverageReports" -reporttypes:Html
+
+##########################################################
+
+one line command for package manager console for 
+
+deleting the test files 
+collecting the code coverage report xml file
+converting CoverageReport xml to Html files 
+rm -r .\Test.WharmManager.API\TestResults ; dotnet test --collect "XPlat code coverage" ;  reportgenerator -reports:".\Test.WharmManager.API\TestResults\**\*.xml" -targetdir:".\Test.WharmManager.API\TestResults\CoverageReports" -reporttypes:Html
+
+
+##########################################################
