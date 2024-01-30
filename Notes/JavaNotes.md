@@ -5,6 +5,14 @@
 ## for Hashtable use
 ``` java
     Hashtabel<String, Integer> map = new Hashtable<>();
+
+    put(key, value)
+    get(key)
+    remove(key)
+    clear()
+    size()
+    keyset()
+    values()
 ```
 
 ## for string builder
@@ -29,6 +37,19 @@ List<String> list = new ArrayList<String>();
 
 String binaryString = Integer.toBinayString(<Integer>);
 
+```
+
+## stack 
+``` java
+import java.util.Stack;
+
+        Stack<String> animals= new Stack<>();
+
+        pop()
+        peek()
+        push()
+        size()
+        isEmpty()
 ```
 
 

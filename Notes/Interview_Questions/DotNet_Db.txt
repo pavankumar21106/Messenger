@@ -1,0 +1,27 @@
+General .NET Interview Questions
+
+Explain the concept of asynchronous programming and its benefits.
+Explain the concept of dependency injection and its role.
+What are some of the key best practices to follow when developing .NET applications?
+Explain the SOLID principles of object-oriented programming and how they can be applied in .NET development to achieve clean, maintainable, and extensible code.
+Discuss different architectural and design patterns commonly used in .NET development.
+How would you implement a secure authentication and authorization mechanism in a .NET application to protect sensitive data and control user access?
+Distinguish between the keywords 'object', 'var', and 'dynamic' in C# and explain their usage scenarios.
+Describe your approach to exception handling in .NET applications, including identifying, catching, and handling different types of exceptions effectively to ensure application stability and user experience.
+How would you implement a mechanism in a .NET application to automatically send notifications or emails when specific events occur, such as record insertions or updates, to keep relevant stakeholders informed?
+What is caching and discuss different caching mechanisms available in .NET
+
+ 
+DB-Related Interview Questions
+
+What is a materialized view?
+Does data updation in materialized views also modify the data in the original table and vice versa?
+How to implement and manage relationships between tables in different databases when one table contains a primary key and the other contains a foreign key?
+How to ensure consistent schema and data updates across different environments (QA, dev, prod) with separate databases?
+How to handle and manage exceptions effectively in database operations?
+What measures can be taken to secure databases and protect against unauthorized access and data breaches?
+What distinguishing features does PostgreSQL offer compared to other popular database systems like SQL Server and MySQL?
+ What is the distinction between low-latency transaction processing (LLTP) and low-latency operational processing (LLOP)?
+What is database normalization and what are its benefits?
+ How to optimize existing database queries and what factors should be considered during query optimization?
+ 
